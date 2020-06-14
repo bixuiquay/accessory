@@ -1,6 +1,6 @@
 import { randomBytes } from 'crypto';
 
-import { genSalt, hash } from 'bcryptjs';
+import { genSalt, hash } from 'bcrypt';
 
 /**
  * Encrypt password

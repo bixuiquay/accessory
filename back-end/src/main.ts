@@ -1,7 +1,8 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe, INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { GlobalGuards } from './auth/guards';
 
 /**
  * Apply swagger
@@ -24,6 +25,7 @@ const useSwagger = (app: INestApplication): void => {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('/api');
+  const reflector = app.get(Reflector);
 
    // Enable pipes
   app.useGlobalPipes(new ValidationPipe({
@@ -32,6 +34,8 @@ async function bootstrap() {
     transform: true,
   }));
 
+    // Enable guards.Guards are executed after each middleware, but before any interceptor and pipe.
+    app.useGlobalGuards(...GlobalGuards(reflector));
   
   // Enable cors
   app.enableCors({ credentials: true, origin: true });

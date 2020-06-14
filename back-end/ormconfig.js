@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-console.log('process.env.DB_HOST: ', process.env.DB_HOST);
 module.exports = {
   'name': 'default',
   'type': 'postgres',
