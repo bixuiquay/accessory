@@ -2,7 +2,6 @@ import { Allow, IsNotEmpty } from 'class-validator';
 import { AuditableResponse } from 'src/core/models/base.dto';
 import { ApiResponseProperty } from '@nestjs/swagger';
 
-
 export class ProductCreateRequest {
   @Allow()
   @IsNotEmpty()
