@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 import { ValidationPipe, INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { GlobalGuards } from './auth/guards';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 /**
  * Apply swagger
@@ -12,8 +14,8 @@ import { GlobalGuards } from './auth/guards';
  */
 const useSwagger = (app: INestApplication): void => {
   const options = new DocumentBuilder()
-    .setTitle('CMS API Documentation')
-    .setDescription('This is an API Documentation for CMS that enables you to interact with resources: Deals, Products, Cities, Locations,...')
+    .setTitle('API Documentation')
+    .setDescription('Commerce')
     .setVersion('1.1.0')
     .addBearerAuth()
     .build();

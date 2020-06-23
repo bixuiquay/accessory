@@ -11,6 +11,17 @@ export class BaseEntity {
   updatedAt: Date;
 }
 
+export class BaseEntityV1 {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+  updatedAt: Date;
+}
+
 export class AuditableEntity extends BaseEntity {
   @Column({ nullable: true })
   createdBy: string;

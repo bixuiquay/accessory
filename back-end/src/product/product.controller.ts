@@ -1,7 +1,7 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Query } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { ApiOperation, ApiOkResponse, ApiTags, ApiBearerAuth } from '@nestjs/swagger';
-import { ProductResponse, ProductCreateRequest } from './product.dto';
+import { ProductResponse, ProductCreateRequest, ProductPaginatedRequest } from './product.dto';
 import { Resources, Public } from 'src/core/decorators';
 import { ResourceType } from 'src/database/entities/user-role.entity';
 
@@ -14,13 +14,8 @@ export class ProductController {
   @Get()
   @ApiOperation({ summary: 'Retrieves all products with query params' })
   @ApiOkResponse({ type: ProductResponse, description: 'Returns all products' })
-  async getAll() {
-    return [
-      {
-        name: 'akakak',
-      },
-    ];
-    // return await this.service.getAll();
+  getAll(@Query() filter: ProductPaginatedRequest) {
+    return this.service.getAll(filter);
   }
 
   @Public()
@@ -37,6 +32,6 @@ export class ProductController {
   @ApiBearerAuth()
   @Post()
   addProduct(@Body() dto: ProductCreateRequest) {
-    
+    return this.service.addProduct(dto);
   }
 }

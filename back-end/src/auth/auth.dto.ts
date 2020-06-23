@@ -13,15 +13,15 @@ export class LoginRequest {
 }
 
 export class RegisterRequest {
-  @ApiProperty({ example: 'john' })
+  @ApiProperty({ example: 'admin' })
   @IsNotEmpty()
   readonly username: string;
 
-  @ApiProperty({ example: 'john@ex.com' })
+  @ApiProperty({ example: 'admin@gmail.com' })
   @IsEmail()
   readonly email: string;
 
-  @ApiProperty({ example: 'john' })
+  @ApiProperty({ example: 'minhto' })
   @IsNotEmpty()
   readonly lastName: string;
 
@@ -43,7 +43,11 @@ export class UserRoleRequest {
   @IsNotEmpty()
   readonly name: string;
 
-  @ApiProperty({ example: 'john@ex.com' })
+  @ApiProperty({ example: [ResourceType.Product,
+    ResourceType.Brand, ResourceType.Category,
+    ResourceType.Delivery, ResourceType.Guest,
+    ResourceType.Order, ResourceType.ChildCategory
+  ] })
   readonly resources: ResourceType[];
 }
 

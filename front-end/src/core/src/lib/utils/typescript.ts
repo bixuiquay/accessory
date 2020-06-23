@@ -1,0 +1,1 @@
+export type Properties<Base> = (keyof Base);
