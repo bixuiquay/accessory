@@ -1,4 +1,4 @@
-import { Controller, Body, Get, Post } from '@nestjs/common';
+import { Controller, Body, Get, Post, Put, Param, Delete } from '@nestjs/common';
 import { ResourceType } from 'src/database';
 import { Resources, Public } from 'src/core/decorators';
 import { ApiOperation, ApiOkResponse, ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -28,4 +28,22 @@ export class BrandController {
   async add(@Body() categoryRequest: BrandCreateRequest): Promise<any>{
     return this.service.add(categoryRequest);
   }
+
+  @Resources(ResourceType.Brand)
+  @ApiBearerAuth()
+  @Put(':id')
+  @ApiOperation({ summary: 'update a brand' })
+  @ApiOkResponse({ type: BrandResponse, description: 'Updated brand' })
+  async update(@Param('id')id: number, @Body() brandRequest: BrandCreateRequest): Promise<any>{
+    return this.service.update(id, {...brandRequest});
+  }
+  @Resources(ResourceType.Brand)
+  @Delete(':id')
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'delete a brand' })
+  @ApiOkResponse({ type: BrandResponse, description: 'delete brand' })
+  async delete(@Param('id')id: number): Promise<any>{
+    return await this.service.delete(id);
+  }
+
 }

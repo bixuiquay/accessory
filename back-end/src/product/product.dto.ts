@@ -68,7 +68,7 @@ export class ProductResponse extends AuditableResponse {
 
   @ApiResponseProperty({ example: 'description' })
   description: string;
-
+  
   @ApiResponseProperty({ example: 'addad' })
   price: number;
 

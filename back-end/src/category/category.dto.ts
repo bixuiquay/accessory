@@ -5,7 +5,12 @@ export class CategoryCreateRequest {
   @Allow()
   @ApiProperty({ example: 'Asus' })
   @IsNotEmpty()
-  name: string
+  name: string;
+
+  @Allow()
+  @ApiProperty({ example: 'Asus' })
+  @IsNotEmpty()
+  shortName: string
 }
 
 export class CategoryResponse {
