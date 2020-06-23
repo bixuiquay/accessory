@@ -3,10 +3,10 @@ import { BaseEntity } from './base.entity';
 
 export enum ResourceType {
   Product = 'Product',
-  ProductType = 'ProductType',
+  Category = 'Category',
+  ChildCategory = 'ChildCategory',
   Order = 'Order',
-  Branch = 'Branch',
-  Manufacturer = 'Manufacturer',
+  Brand = 'Brand',
   Delivery = 'Delivery',
   Guest = 'Guest'
 }

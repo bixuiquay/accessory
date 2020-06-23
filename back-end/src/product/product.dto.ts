@@ -1,35 +1,62 @@
 import { Allow, IsNotEmpty } from 'class-validator';
-import { AuditableResponse } from 'src/core/models/base.dto';
-import { ApiResponseProperty } from '@nestjs/swagger';
+import { AuditableResponse, BasePaginatedRequest } from 'src/core/models/base.dto';
+import { ApiResponseProperty, ApiProperty } from '@nestjs/swagger';
+import { Product } from 'src/database';
 
 export class ProductCreateRequest {
   @Allow()
+  @ApiProperty({ example: 'O cung SSD 120 GB' })
   @IsNotEmpty()
   name: string;
   
   @Allow()
+  @ApiProperty({ example: 1 })
   @IsNotEmpty()
-  typeId: string;
+  categoryId: number;
 
   @Allow()
+  @ApiProperty({ example: 1 })
+  @IsNotEmpty()
+  brandId: number;
+
+  @Allow()
+  @ApiProperty({ example: `I don't know` })
   @IsNotEmpty()
   description: string;
 
   @Allow()
+  @ApiProperty({ example: 500000 })
   @IsNotEmpty()
   price: number;
 
   @Allow()
+  @ApiProperty({ example: 154 })
   @IsNotEmpty()
   quantity: number;
 
   @Allow()
+  @ApiProperty({ example:  '13.2.jpg'})
   @IsNotEmpty()
   image: string;
 
   @Allow()
+  @ApiProperty({ example:  ['13.2.jpg', '1580981363598Group 11 (3) - Copy.jpg']})
   @IsNotEmpty()
   listImage: string[];
+}
+
+export class ProductPaginatedRequest extends BasePaginatedRequest<Product>  {
+  @Allow()
+  @ApiProperty({ description: 'child category id', required: false })
+  childCategoryId: number;
+
+  @Allow()
+  @ApiProperty({ description: 'brand id', required: false })
+  brandId: number;
+
+  @Allow()
+  @ApiProperty({ description: 'search key', required: false })
+  searchKeyword: string;
 }
 
 export class ProductResponse extends AuditableResponse {

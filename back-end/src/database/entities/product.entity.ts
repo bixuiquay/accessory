@@ -1,7 +1,8 @@
-import { Column, Entity, OneToOne, JoinColumn } from 'typeorm';
+import { Column, Entity, OneToOne, JoinColumn, ManyToOne } from 'typeorm';
 
 import { AuditableEntity } from './base.entity';
-import { ProductType } from './product-type.entity';
+import { ChildCategory } from './child-category.entity';
+import { Brand } from './brand.entity';
 
 @Entity()
 export class Product extends AuditableEntity {
@@ -9,15 +10,17 @@ export class Product extends AuditableEntity {
   @Column()
   name: string;
 
-  @OneToOne(type => ProductType)
-  @JoinColumn()
-  type: ProductType;
+  @ManyToOne('ChildCategory', 'childCategoryId')
+  category: ChildCategory;
+
+  @ManyToOne('Brand', 'brandId')
+  brand: Brand;
 
   @Column()
   description: string;
 
   @Column( { type: 'decimal' } )
-  price: string;
+  price: number;
 
   @Column({ type: 'integer'})
   quantity: number;

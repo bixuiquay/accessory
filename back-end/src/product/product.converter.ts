@@ -4,4 +4,8 @@ import { BaseConverter } from 'src/core/services';
 import { Product } from 'src/database/entities/product.entity';
 
 @Injectable()
-export class ProductConverter extends BaseConverter<ProductResponse, Product> { }
+export class ProductConverter extends BaseConverter<ProductResponse, Product> {
+  convertImageProducts(products) {
+    
+  }
+}

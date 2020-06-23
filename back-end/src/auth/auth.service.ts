@@ -24,11 +24,17 @@ export class AuthService {
     const entities = await queryBuilder.getMany();
     const entity = entities[0];
 
-    if (entity && bcrypt.compare(pass, entity.passwordHash)) {
+    const check = await bcrypt.compare(pass, entity.passwordHash);
+
+    if (entity && check) {
       const { ...result } = entity;
       return result;
     }
     return null;
+  }
+
+  async findUser(id: string) {
+    return await this.repository.findOne({ id});
   }
 
   async login(loginRequest: LoginRequest) {

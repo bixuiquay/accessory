@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, JoinColumn, Unique } from 'typeorm';
+import { Column, Entity, OneToOne, JoinColumn, Unique, ManyToOne } from 'typeorm';
 import { UserRole } from './user-role.entity';
 import { BaseEntity } from './base.entity';
 
@@ -20,8 +20,7 @@ export class User extends BaseEntity{
   @Column({ nullable: true })
   firstName: string;
 
-  @OneToOne(type => UserRole, { nullable: true })
-  @JoinColumn()
+  @ManyToOne('UserRole', 'userRoleId')
   role: UserRole;
 
   @Column()

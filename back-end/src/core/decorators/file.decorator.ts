@@ -1,6 +1,6 @@
 import { ApiBody } from '@nestjs/swagger';
 
-export const ApiFile = (fileName = 'file'): MethodDecorator => (
+export const ApiImage = (imageName = 'images'): MethodDecorator => (
   target: any,
   propertyKey: string,
   descriptor: PropertyDescriptor,
@@ -9,7 +9,7 @@ export const ApiFile = (fileName = 'file'): MethodDecorator => (
     schema: {
       type: 'object',
       properties: {
-        [fileName]: {
+        [imageName]: {
           type: 'string',
           format: 'binary',
         },
