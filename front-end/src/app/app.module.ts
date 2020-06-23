@@ -8,10 +8,12 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { ProductStateModule } from 'src/+state/product/product.state';
 import { CoreModule } from 'src/core/src/lib/core.module';
 import { AppComponent } from './app.component';
+import { AppNavComponent } from './app-nav/app-nav.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppNavComponent
   ],
   imports: [
     ProductStateModule.forChild(),
