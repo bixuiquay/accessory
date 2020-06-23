@@ -23,4 +23,23 @@ export class ChildCategoryService {
       category: new Category({id: categoryId})
     });
   }
+
+  async update(id: number, childCategoryCreate: ChildCategoryCreateRequest): Promise<any> {
+    const e = await this.repository.findOne({id});
+
+    const saveEntity = {...e,
+      category: childCategoryCreate.categoryId,
+      name: childCategoryCreate.name,
+    };
+
+    return await this.repository.save(saveEntity);
+
+  }
+
+  delete(id: number): Promise<any>{
+    return this.repository.delete(
+      {id}
+    );
+  }
+
 }

@@ -8,6 +8,8 @@ import { Pagination, paginate } from 'nestjs-typeorm-paginate';
 import { Brand } from 'src/database/entities/brand.entity';
 import { ProductConverter } from './product.converter';
 import { SortDir } from 'src/core/models';
+import { promises } from 'dns';
+import { ObjectID } from 'typeorm';
 
 @Injectable()
 export class ProductService {
@@ -89,5 +91,29 @@ export class ProductService {
 
     const save = await this.productRepository.save(saveEntity);
     return this.convert.toDTO(save)
+  }
+
+  async update(id: string, createProduct: ProductCreateRequest): Promise<ProductResponse> {
+    const e = await this.productRepository.findOne({id});
+
+    const saveEntity = {...e,
+      name: createProduct.name,
+      description: createProduct.description,
+      image: createProduct.image,
+      price: createProduct.price,
+      listImage: createProduct.listImage,
+      quantity: createProduct.quantity,
+      category: new ChildCategory({id: createProduct.categoryId}),
+      brand: new Brand({id: createProduct.brandId})
+    };
+
+    const save = await this.productRepository.save(saveEntity);
+    return this.convert.toDTO(save);
+  }
+
+  delete(id: string): Promise<any>{
+    return this.productRepository.delete(
+      {id}
+    );
   }
 }

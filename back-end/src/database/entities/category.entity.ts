@@ -8,6 +8,9 @@ export class Category extends BaseEntityV1 {
   @Column()
   name: string;
 
+  @Column({nullable: true})
+  shortName: string;
+
   @OneToMany(type => ChildCategory, child => child.category, { nullable: true})
   childCategories: ChildCategory[];
   /**

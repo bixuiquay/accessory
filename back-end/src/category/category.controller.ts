@@ -1,4 +1,4 @@
-import { Controller, Body, Get, Post } from '@nestjs/common';
+import { Controller, Body, Get, Post, Put, Param } from '@nestjs/common';
 import { ResourceType } from 'src/database';
 import { Resources, Public } from 'src/core/decorators';
 import { ApiOperation, ApiOkResponse, ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -27,5 +27,14 @@ export class CategoryController {
   @ApiOkResponse({ type: CategoryResponse, description: 'New category' })
   async add(@Body() categoryRequest: CategoryCreateRequest): Promise<any>{
     return this.service.add(categoryRequest);
+  }
+
+  @Put(':id')
+  @ApiBearerAuth()
+  @Resources(ResourceType.Category)
+  @ApiOperation({ summary: 'update a category' })
+  @ApiOkResponse({ type: CategoryResponse, description: 'Updated category' })
+  async update(@Param('id')id: number, @Body() categoryRequest: CategoryCreateRequest): Promise<any>{
+    return this.service.update(id, {...categoryRequest});
   }
 }

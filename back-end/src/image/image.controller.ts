@@ -53,4 +53,6 @@ export class ImageController {
   async getImage(@Param('imageName') imageName, @Res() res): Promise<any> {
     res.sendFile(imageName, { root: 'images'});
   }
+
+  
 }
