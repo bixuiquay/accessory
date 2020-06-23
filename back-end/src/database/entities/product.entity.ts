@@ -22,6 +22,21 @@ export class Product extends AuditableEntity {
   @Column( { type: 'decimal' } )
   price: number;
 
+  @Column( { type: 'decimal' , nullable: true} )
+  pricesale: number; // gia giam
+
+  @Column( {nullable: true} )
+  isfeature: boolean;  // de cu
+
+  @Column( { nullable: true} )
+  islastminute: boolean; // khuyen mai
+
+  @Column( { nullable: true} )
+  isflashsale: boolean; // flash sale
+
+  @Column( { nullable: true} )
+  iswishlist: number; // thich cho top binh chon
+
   @Column({ type: 'integer'})
   quantity: number;
 

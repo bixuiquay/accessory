@@ -6,6 +6,7 @@ import { User } from 'src/database/entities/user.entity';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { UserRole } from 'src/database/entities/user-role.entity';
+import { Client } from 'src/database/entities/client.entity';
 const saltRounds = 10;
 
 @Injectable()
@@ -15,7 +16,7 @@ export class AuthService {
     @InjectRepository(User)
     private readonly repository: Repository<User>,
     @InjectRepository(UserRole)
-    private readonly roleRepository: Repository<UserRole>
+    private readonly roleRepository: Repository<UserRole>,
   ) {}
 
   async validateUser(username: string, pass: string): Promise<User> {

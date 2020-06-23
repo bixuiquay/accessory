@@ -15,7 +15,7 @@ export class CartProduct extends BaseEntityV1 {
 
   @Column({ type: "int"})
   quantity: number;
-
+  
   /**
    * Constructor
    *

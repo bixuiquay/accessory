@@ -1,13 +1,13 @@
 import { Column, Entity, OneToOne, JoinColumn, ManyToOne } from 'typeorm';
 
 import { BaseEntityV1 } from './base.entity';
-import { User } from './user.entity';
+import { Client } from './client.entity';
 
 @Entity()
 export class Cart extends BaseEntityV1 {
 
-  @ManyToOne('User', 'userId')
-  user: User;
+  @ManyToOne('Client', 'clientId')
+  client: Client;
 
   /**
    * Constructor

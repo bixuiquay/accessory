@@ -28,4 +28,11 @@ export class CategoryService {
     e.name = entity.name;
     return this.repository.save(e);
   }
+
+  delete(id: number): Promise<any>{
+    return this.repository.delete(
+      {id}
+    );
+  }
+
 }
