@@ -8,6 +8,8 @@ import { ChildCategory } from './entities/child-category.entity';
 import { Cart } from './entities/cart.entity';
 import { CartProduct } from './entities/cart-product.entity';
 import { Brand } from './entities/brand.entity';
+import { Client } from './entities/client.entity';
+import { Invoice } from './entities/invoice.entity';
 
 console.log('process.env.DB_HOST: ', process.env.DB_HOST);
 @Module({
@@ -19,7 +21,7 @@ console.log('process.env.DB_HOST: ', process.env.DB_HOST);
       username: process.env.DB_USER || 'useradmin',
       password: process.env.DB_PASSWORD || 'Admin@12345',
       database: process.env.DB_NAME || 'accessory',
-      entities: [Product, Category, User, UserRole, ChildCategory, Cart, CartProduct, Brand],
+      entities: [Product, Category, User, UserRole, ChildCategory, Cart, CartProduct, Brand,Client,Invoice],
       synchronize: true,
     }),
   ],

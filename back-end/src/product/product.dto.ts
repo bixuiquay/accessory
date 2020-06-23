@@ -28,6 +28,26 @@ export class ProductCreateRequest {
   @ApiProperty({ example: 500000 })
   @IsNotEmpty()
   price: number;
+  
+  @Allow()
+  @ApiProperty({ example: 500000 })
+  pricesale: number;
+
+  @Allow()
+  @ApiProperty({ example: 500000 })
+  isfeature: boolean;
+
+  @Allow()
+  @ApiProperty({ example: 500000 })
+  islastminute: boolean;
+
+  @Allow()
+  @ApiProperty({ example: 500000 })
+  isflashsale: boolean;
+
+  @Allow()
+  @ApiProperty({ example: 500000 })
+  iswishlist: number;
 
   @Allow()
   @ApiProperty({ example: 154 })
@@ -71,6 +91,21 @@ export class ProductResponse extends AuditableResponse {
   
   @ApiResponseProperty({ example: 'addad' })
   price: number;
+
+  @ApiResponseProperty({ example: '123123' })
+  pricesale: number;
+
+  @ApiResponseProperty({ example: '1 or 2' })
+  isfeature: boolean;
+
+  @ApiResponseProperty({ example: '1 or 2' })
+  islastminute: boolean;
+
+  @ApiResponseProperty({ example: '1 or 2' })
+  isflashsale: boolean;
+
+  @ApiResponseProperty({ example: '5 like' })
+  iswishlist: number;
 
   @ApiResponseProperty({ example: 'addad' })
   quantity: number;

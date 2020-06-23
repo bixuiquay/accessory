@@ -1,4 +1,4 @@
-import { Controller, Body, Get, Post, Put, Param } from '@nestjs/common';
+import { Controller, Body, Get, Post, Put, Param, Delete } from '@nestjs/common';
 import { ResourceType } from 'src/database';
 import { Resources, Public } from 'src/core/decorators';
 import { ApiOperation, ApiOkResponse, ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -37,4 +37,14 @@ export class CategoryController {
   async update(@Param('id')id: number, @Body() categoryRequest: CategoryCreateRequest): Promise<any>{
     return this.service.update(id, {...categoryRequest});
   }
+
+  @Resources(ResourceType.Category)
+  @Delete(':id')
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'delete a Category' })
+  @ApiOkResponse({ type: CategoryResponse, description: 'delete category' })
+  async delete(@Param('id')id: number): Promise<any>{
+    return await this.service.delete(id);
+  }
+
 }
