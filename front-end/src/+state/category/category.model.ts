@@ -2,11 +2,8 @@ import { BaseEntity, PaginationOptions } from 'src/core/src';
 
 export interface Category extends BaseEntity {
   name: string;
-  categoryId: number;
-  brandId: number;
-  description: string;
-  price: number;
-  quantity: number;
+  shortName: string;
+  childCategories: any[];
 }
 
 export interface FilterCategoryOptions extends PaginationOptions {

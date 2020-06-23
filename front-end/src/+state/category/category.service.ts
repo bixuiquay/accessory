@@ -22,13 +22,8 @@ export class CategoryService {
    *
    * @return {Observable<Pagination<FilterCategoryOptions[]>>}
    */
-  getAll(filter: FilterCategoryOptions): Observable<Pagination<Category>> {
-    if (isEmpty(filter)) {
-      filter.sortBy= 'updated_at';
-      filter.sortDir = 'desc';
-    }
-
-    return this.http.get(API_CATEGORY, { params: santinizeObject(filter) });
+  getAll(): Observable<Category[]> {
+    return this.http.get(API_CATEGORY);
   }
 
   // update(item: Partial<CustomerMerchant>):Observable<CustomerMerchant> {

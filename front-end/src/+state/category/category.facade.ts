@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { Pagination } from 'src/core/src';
 import { Category, FilterCategoryOptions } from './category.model';
 import { CategoryQuery } from './category.query'
 import { CategoryService } from './category.service'
@@ -10,7 +9,7 @@ import { CategoryStore } from './category.store'
 @Injectable()
 export class CategoryFacade {
   loading$ = this.query.selectLoading();
-  accounts$ = this.query.selectAll();
+  categories$ = this.query.selectAll();
 
   /**
    * Constructor
@@ -27,11 +26,11 @@ export class CategoryFacade {
    * @param  {FilterCategoryOptions} filters   The filters options
    * @return {Observable<CustomerMerchant[]>}
    */
-  getAll(filters?: FilterCategoryOptions): Observable<Pagination<Category>> {
+  getAll(): Observable<Category[]> {
     this.store.setLoading(true);
 
-    return this.service.getAll(filters).pipe(
-      tap((data: Pagination<Category>) =>  this.store.set(data.items)),
+    return this.service.getAll().pipe(
+      tap((data: Category[]) =>  this.store.set(data)),
       tap(() => this.store.setLoading(false))
     );
   }
