@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryFacade } from 'src/+state/category';
 import { Product, ProductFacade } from 'src/+state/product';
 
 @Component({
@@ -11,7 +12,8 @@ export class AppComponent implements OnInit  {
   products: Product[];
 
   constructor(
-    private productFacade: ProductFacade
+    private productFacade: ProductFacade,
+    private categoryFacade: CategoryFacade
   ){}
 
   // product$ = this.productFacade.product$;
@@ -25,5 +27,6 @@ export class AppComponent implements OnInit  {
       this.products = data.items;
       console.log('data.items: ', data.items);
     });
+    this.categoryFacade.getAll().subscribe();
   }
 }

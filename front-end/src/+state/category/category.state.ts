@@ -13,7 +13,7 @@ export class CategoryStateModule {
       providers: [
         {
           provide: ApiUrlToken,
-          useValue: environment.api.urls,
+          useValue: environment.api.urls.accessoryUrl,
         },
         HttpService,
         CategoryFacade,
