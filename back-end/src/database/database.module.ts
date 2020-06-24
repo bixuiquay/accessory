@@ -21,7 +21,7 @@ console.log('process.env.DB_HOST: ', process.env.DB_HOST);
       username: process.env.DB_USER || 'useradmin',
       password: process.env.DB_PASSWORD || 'Admin@12345',
       database: process.env.DB_NAME || 'accessory',
-      entities: [Product, Category, User, UserRole, ChildCategory, Cart, CartProduct, Brand,Client,Invoice],
+      entities: [Product, Category, User, UserRole, ChildCategory, Cart, CartProduct, Brand, Client, Invoice],
       synchronize: true,
     }),
   ],
