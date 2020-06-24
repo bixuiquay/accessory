@@ -34,7 +34,6 @@ export class ClientLogin {
 
 export class ClientRegister {
   @ApiProperty({ example: 'admin' })
-  @IsNotEmpty()
   readonly username: string;
 
   @ApiProperty({ example: 'admin@gmail.com' })
@@ -42,11 +41,9 @@ export class ClientRegister {
   readonly email: string;
 
   @ApiProperty({ example: 'minhto' })
-  @IsNotEmpty()
   readonly lastName: string;
 
   @ApiProperty({ example: 'Tran' })
-  @IsNotEmpty()
   readonly firstName: string;
 
   @ApiProperty({ example: 'p@ssw0rd' })
@@ -54,14 +51,11 @@ export class ClientRegister {
   readonly password: string;
 
   @ApiProperty({ example: '123123' })
-  @IsNotEmpty()
   readonly phonenumber: string;
 
   @ApiProperty({ example: 'hcm' })
-  @IsNotEmpty()
   readonly city: string;
 
   @ApiProperty({ example: '163 ngo gia tu' })
-  @IsNotEmpty()
   readonly address: string;
 }

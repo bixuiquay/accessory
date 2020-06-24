@@ -1,10 +1,11 @@
-import { Column, Entity, OneToOne, JoinColumn, Unique, ManyToOne } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 import { BaseEntity } from './base.entity';
 
 @Entity()
 export class Client extends BaseEntity{
   @Column({
-    unique: true
+    unique: true,
+    nullable: true
   })
   username: string;
 
@@ -13,7 +14,7 @@ export class Client extends BaseEntity{
   })
   email: string;
 
-  @Column( { nullable: true } )
+  @Column({ nullable: true } )
   lastName: string;
 
   @Column({ nullable: true })
@@ -22,19 +23,19 @@ export class Client extends BaseEntity{
   @Column()
   passwordHash: string;
 
-  @Column()
+  @Column({ nullable: true })
   address: string;
 
-  @Column()
+  @Column( { nullable: true } )
   city: string;
 
-  @Column()
+  @Column({ nullable: true })
   phone: string;
 
   /**
    * Constructor
    *
-   * @param  {Partial<User> } user    The partial info
+   * @param  {Partial<client> } client    The partial info
    */
   constructor(client: Partial<Client>) {
     super()

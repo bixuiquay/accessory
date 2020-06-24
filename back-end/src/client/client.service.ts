@@ -1,4 +1,4 @@
-import { Injectable, ForbiddenException } from '@nestjs/common';
+import { Injectable, ForbiddenException, BadRequestException } from '@nestjs/common';
 import { Client } from 'src/database/entities/client.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -28,20 +28,26 @@ export class ClientService {
   // }
 
   async register(client: ClientRegister) {
-    const hash = bcrypt.hashSync(client.password, saltRounds);
-    const entity = {
-      email: client.email,
-      lastName: client.lastName,
-      username: client.username,
-      firstName: client.firstName,
-      address: client.address,
-      city: client.city,
-      phonenumber: client.phonenumber,
-      passwordHash: hash
-      
-    }
+    try {
+      const hash = bcrypt.hashSync(client.password, saltRounds);
+      const entity = {
+        email: client.email,
+        lastName: client.lastName,
+        username: client.username,
+        firstName: client.firstName,
+        address: client.address,
+        city: client.city,
+        phone: client.phonenumber,
+        passwordHash: hash
+      }
 
-    return await this.repository.save(entity);
+      return await this.repository.save(entity);
+    }
+    catch(error)
+    {
+      console.log('error: ', error)
+      throw new BadRequestException()
+    }
   }
 
   async validateUser(username: string, pass: string): Promise<Client> {
