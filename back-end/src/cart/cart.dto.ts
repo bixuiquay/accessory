@@ -3,20 +3,24 @@ import { ApiResponseProperty, ApiProperty } from "@nestjs/swagger";
 
 export class CartCreateRequest {
   @Allow()
-  @ApiProperty({ example: 'Asus' })
+  @ApiProperty({ example: '1d7bc496-5865-4cfa-8f54-54fd4cd233d9' })
   @IsNotEmpty()
-  name: string;
-
-  @Allow()
-  @ApiProperty({ example: 'Asus' })
-  @IsNotEmpty()
-  shortName: string
+  clientId: string;
 }
 
-export class CategoryResponse {
-  @ApiResponseProperty({ example: '1d7bc496-5865-4cfa-8f54-54fd4cd233d9' })
+export class CartResponse {
+  @ApiResponseProperty({ example: '2' })
   id: string;
-  
-  @ApiResponseProperty({ example: 'Ram Laptop' })
-  name: string;
+}
+
+export class CartUpdateRequest {
+  @Allow()
+  @ApiProperty({ example: '1d7bc496-5865-4cfa-8f54-54fd4cd233d9' })
+  @IsNotEmpty()
+  productId: string;
+
+  @Allow()
+  @ApiProperty({ example: '1' })
+  @IsNotEmpty()
+  quantity: number;
 }
