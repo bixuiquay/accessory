@@ -2,7 +2,7 @@ import { Controller, Body, Get, Post, Put, Param, Delete } from '@nestjs/common'
 import { ResourceType } from 'src/database';
 import { Resources, Public } from 'src/core/decorators';
 import { ApiOperation, ApiOkResponse, ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { CategoryResponse, CartCreateRequest } from './cart.dto';
+import { CartResponse, CartCreateRequest, CartUpdateRequest } from './cart.dto';
 import { CartService } from './cart.service';
 
 @ApiTags('cart')
@@ -13,14 +13,13 @@ export class CartController {
   ){}
 
 
-  // @Post()
-  // @ApiBearerAuth()
-  // @Resources(ResourceType.Cart)
-  // @ApiOperation({ summary: 'Add a new category' })
-  // @ApiOkResponse({ type: CategoryResponse, description: 'New category' })
-  // async add(@Body() categoryRequest: CartCreateRequest): Promise<any>{
-  //   return this.service.add(categoryRequest);
-  // }
+  @Put(':id')
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'update a cart' })
+  @ApiOkResponse({ type: CartResponse, description: 'update a new cart' })
+  async add(@Param('id')id: number, @Body() categoryRequest: CartUpdateRequest): Promise<any>{
+    return this.service.update(id, categoryRequest);
+  }
 
   // @Put(':id')
   // @ApiBearerAuth()

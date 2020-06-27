@@ -6,6 +6,7 @@ import { ClientCreateRequest , ClientRegister, ClientLogin} from './client.dto';
 import { constants } from 'buffer';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { CartService } from 'src/cart/cart.service';
 const saltRounds = 10;
 
 @Injectable()
@@ -14,6 +15,7 @@ export class ClientService {
     throw new Error("Method not implemented.");
   }
   constructor(
+    private readonly cartService: CartService,
     private readonly jwtService: JwtService,
     @InjectRepository(Client)
     private readonly repository: Repository<Client>
@@ -41,7 +43,13 @@ export class ClientService {
         passwordHash: hash
       }
 
-      return await this.repository.save(entity);
+      const savedClient = await this.repository.save(entity);
+      //add cart for client
+      const cart = await this.cartService.add({clientId: savedClient.id});
+      return {
+        client,
+        cart
+      }
     }
     catch(error)
     {
@@ -50,8 +58,8 @@ export class ClientService {
     }
   }
 
-  async validateUser(username: string, pass: string): Promise<Client> {
-    const queryBuilder = this.repository.createQueryBuilder('client').where({username});
+  async validateUser(email: string, pass: string): Promise<Client> {
+    const queryBuilder = this.repository.createQueryBuilder('client').where({email});
     const entities = await queryBuilder.getMany();
     const entity = entities[0];
 
@@ -69,17 +77,21 @@ export class ClientService {
   }
 
   async login(loginRequest: ClientLogin) {
-    const { username, password } = loginRequest;
-    const userValid = await this.validateUser(username, password);
+    const { email, password } = loginRequest;
+    const userValid = await this.validateUser(email, password);
 
     if (!userValid) {
       throw new ForbiddenException();
     }
 
     const { id } = userValid;
-    const payload = { username: username, sub: id };
+    const payload = { username: email, sub: id };
+
+    //add cart for client
+    const cart = await this.cartService.add({clientId: id});
     return {
       access_token: this.jwtService.sign(payload),
+      cart
     };
   }
 
