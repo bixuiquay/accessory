@@ -24,6 +24,10 @@ export class ChildCategoryService {
     });
   }
 
+  async get(id:number) {
+    return await this.repository.findOne(id);
+  }
+
   async update(id: number, childCategoryCreate: ChildCategoryCreateRequest): Promise<any> {
     const e = await this.repository.findOne({id});
 

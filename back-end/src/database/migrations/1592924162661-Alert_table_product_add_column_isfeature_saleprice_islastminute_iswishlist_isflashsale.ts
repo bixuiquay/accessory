@@ -4,19 +4,19 @@ export class AlertTableProductAddColumnIsfeatureSalepriceIslastminuteIswishlistI
     name = 'AlertTableProductAddColumnIsfeatureSalepriceIslastminuteIswishlistIsflashsale1592924162661'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`ALTER TABLE "public"."product" ADD "pricesale" numeric`);
-        await queryRunner.query(`ALTER TABLE "public"."product" ADD "isfeature" boolean`);
-        await queryRunner.query(`ALTER TABLE "public"."product" ADD "islastminute" boolean`);
-        await queryRunner.query(`ALTER TABLE "public"."product" ADD "isflashsale" boolean`);
-        await queryRunner.query(`ALTER TABLE "public"."product" ADD "iswishlist" integer`);
+        await queryRunner.query(`ALTER TABLE "public"."product" ADD "priceSale" numeric`);
+        await queryRunner.query(`ALTER TABLE "public"."product" ADD "isFeatured" boolean`);
+        await queryRunner.query(`ALTER TABLE "public"."product" ADD "isLastMinute" boolean`);
+        await queryRunner.query(`ALTER TABLE "public"."product" ADD "isFlashSale" boolean`);
+        await queryRunner.query(`ALTER TABLE "public"."product" ADD "isWishlist" integer`);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`ALTER TABLE "public"."product" DROP COLUMN "iswishlist"`);
-        await queryRunner.query(`ALTER TABLE "public"."product" DROP COLUMN "isflashsale"`);
-        await queryRunner.query(`ALTER TABLE "public"."product" DROP COLUMN "islastminute"`);
-        await queryRunner.query(`ALTER TABLE "public"."product" DROP COLUMN "isfeature"`);
-        await queryRunner.query(`ALTER TABLE "public"."product" DROP COLUMN "pricesale"`);
+        await queryRunner.query(`ALTER TABLE "public"."product" DROP COLUMN "isWishlist"`);
+        await queryRunner.query(`ALTER TABLE "public"."product" DROP COLUMN "isFlashSale"`);
+        await queryRunner.query(`ALTER TABLE "public"."product" DROP COLUMN "isLastMinute"`);
+        await queryRunner.query(`ALTER TABLE "public"."product" DROP COLUMN "isFeatured"`);
+        await queryRunner.query(`ALTER TABLE "public"."product" DROP COLUMN "priceSale"`);
     }
 
 }

@@ -12,21 +12,9 @@ export class AppComponent implements OnInit  {
   products: Product[];
 
   constructor(
-    private productFacade: ProductFacade,
-    private categoryFacade: CategoryFacade
   ){}
 
   // product$ = this.productFacade.product$;
   ngOnInit(): void {
-    const filter = {
-      brandId: 1,
-      page: 1,
-      limit: 10
-    };
-    this.productFacade.getAll(filter).subscribe(data => {
-      this.products = data.items;
-      console.log('data.items: ', data.items);
-    });
-    this.categoryFacade.getAll().subscribe();
   }
 }

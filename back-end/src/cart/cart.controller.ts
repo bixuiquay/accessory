@@ -13,13 +13,13 @@ export class CartController {
   ){}
 
 
-  @Put(':id')
-  @ApiBearerAuth()
-  @ApiOperation({ summary: 'update a cart' })
-  @ApiOkResponse({ type: CartResponse, description: 'update a new cart' })
-  async add(@Param('id')id: number, @Body() categoryRequest: CartUpdateRequest): Promise<any>{
-    return this.service.update(id, categoryRequest);
-  }
+  // @Put(':id')
+  // @ApiBearerAuth()
+  // @ApiOperation({ summary: 'update a cart' })
+  // @ApiOkResponse({ type: CartResponse, description: 'update a new cart' })
+  // async add(@Param('id')id: number, @Body() categoryRequest: CartUpdateRequest): Promise<any>{
+  //   return this.service.update(id, categoryRequest);
+  // }
 
   // @Put(':id')
   // @ApiBearerAuth()

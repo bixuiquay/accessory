@@ -3,15 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+// tslint:disable-next-line:ordered-imports
+import { Router, RouterModule } from '@angular/router';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { CategoryStateModule } from 'src/+state/category/category.state';
+import { ChildCategoryStateModule } from 'src/+state/child-category/child-category.state';
 import { ProductStateModule } from 'src/+state/product/product.state';
 import { CoreModule } from 'src/core/src/lib/core.module';
-import { AppComponent } from './app.component';
-import { AppNavComponent } from './app-nav/app-nav.component';
-import { AppHeaderComponent } from './app-header/app-header.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
-import { CategoryStateModule } from 'src/+state/category/category.state';
+import { AppHeaderComponent } from './app-header/app-header.component';
+import { AppNavComponent } from './app-nav/app-nav.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ProductModule } from './product/product.module';
 
 @NgModule({
   declarations: [
@@ -21,8 +27,14 @@ import { CategoryStateModule } from 'src/+state/category/category.state';
     AppFooterComponent
   ],
   imports: [
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
     ProductStateModule.forChild(),
     CategoryStateModule.forChild(),
+    ChildCategoryStateModule.forChild(),
+    AppRoutingModule,
+    ProductModule,
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
@@ -31,7 +43,10 @@ import { CategoryStateModule } from 'src/+state/category/category.state';
     HttpClientModule,
     NgxPermissionsModule.forRoot(),
   ],
-  providers: [ProductStateModule, ProductStateModule],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(router: Router) {
+  }
+}

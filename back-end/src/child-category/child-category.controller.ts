@@ -20,6 +20,14 @@ export class ChildCategoryController {
     return this.service.getAll();
   }
 
+  @Public()
+  @Get(':id')
+  @ApiOperation({ summary: 'get a childCategory' })
+  @ApiOkResponse({ type: ChildCategoryResponse, description: 'get childCategory' })
+  async get(@Param('id')id: number): Promise<any>{
+    return await this.service.get(id);
+  }
+
   @Resources(ResourceType.ChildCategory)
   @Post()
   @ApiBearerAuth()

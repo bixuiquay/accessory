@@ -1,192 +1,247 @@
-<a class="skip-link screen-reader-text" href="#site-navigation">Skip to navigation</a>
-<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
-
-<div class="top-bar">
-    <div class="container">
-        <nav>
-            <ul id="menu-top-bar-left" class="nav nav-inline pull-left animate-dropdown flip">
-                <li class="menu-item animate-dropdown"><a title="Welcome to Worldwide Electronics Store" href="#">Chào mừng đến CPU-VN</a></li>
-            </ul>
-        </nav>
-
-        <nav>
-            <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
-              
-                <li class="menu-item animate-dropdown"><a title="Track Your Order" href="track-your-order.html"><i class="ec ec-transport"></i>Kiểm tra đơn hàng</a></li>
-                <!-- <li class="menu-item animate-dropdown"><a title="Shop" href="shop.html"><i class="ec ec-shopping-bag"></i>Shop</a></li> -->
-                <li class="menu-item animate-dropdown"><a title="My Account" href="my-account.html"><i class="ec ec-user"></i>Tài khoản</a></li>
-            </ul>
-        </nav>
-    </div>
-</div><!-- /.top-bar -->
-
 <header id="masthead" class="site-header header-v2">
-    <div class="container">
-        <div class="row">
+  <div class="container">
+    <div class="row">
+      <!-- ============================================================= Header Logo ============================================================= -->
+      <div class="header-logo">
+        <a href="home.html" class="header-logo-link" style="margin-top: -25px;">
+          <img src="assets/images/logo.png" style="height: 100px;" />
+        </a>
+      </div>
+      <!-- ============================================================= Header Logo : End============================================================= -->
 
-            <!-- ============================================================= Header Logo ============================================================= -->
-            <div class="header-logo">
-                <a href="home.html" class="header-logo-link" style="margin-top: -25px;">
-                    <img src="assets/images/logo.png" style="height: 100px;" />
-                </a>
-            </div>
-            <!-- ============================================================= Header Logo : End============================================================= -->
+      <div class="primary-nav animate-dropdown">
+        <div class="clearfix">
+          <button
+            class="navbar-toggler hidden-sm-up pull-right flip"
+            type="button"
+            data-toggle="collapse"
+            data-target="#default-header"
+          >
+            ☰
+          </button>
+        </div>
 
-            <div class="primary-nav animate-dropdown">
-                <div class="clearfix">
-                    <button class="navbar-toggler hidden-sm-up pull-right flip" type="button" data-toggle="collapse" data-target="#default-header">
-                            &#9776;
-                    </button>
-                </div>
+        <div class="collapse navbar-toggleable-xs" id="default-header">
+          <nav>
+            <ul id="menu-main-menu" class="nav nav-inline yamm">
+              <li class="menu-item animate-dropdown">
+                <a title="Home v1" href="home.html">Trang chủ</a>
+              </li>
+              <li class="menu-item animate-dropdown">
+                <a title="About Us" href="about.html">Về chúng tôi</a>
+              </li>
+              <li class="menu-item animate-dropdown">
+                <a title="Blog v3" href="blog-v3.html">Blog </a>
+              </li>
+              <li class="menu-item">
+                <a title="Contact Us" href="#">Liên hệ chúng tôi</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
 
-                <div class="collapse navbar-toggleable-xs" id="default-header">
-                    <nav>
-                        <ul id="menu-main-menu" class="nav nav-inline yamm">
-                            <li class="menu-item animate-dropdown  "><a title="Home v1" href="home.html">Trang chủ</a></li>
-                            <li class="menu-item animate-dropdown"><a title="About Us" href="about.html">Về chúng tôi</a></li>
-                            <li class="menu-item animate-dropdown"><a title="Blog v3" href="blog-v3.html">Blog </a></li>
-                            <li class="menu-item"><a title="Contact Us" href="#">Liên hệ chúng tôi</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-
-            <div class="header-support-info">
-                <div class="media">
-                    <span class="media-left support-icon media-middle"><i class="ec ec-support"></i></span>
-                    <div class="media-body">
-                        <span class="support-number"><strong>Hổ trợ</strong> (+800) 856 800 604</span><br/>
-                        <span class="support-email">Email: info@electro.com</span>
-                    </div>
-                </div>
-            </div>
-
-        </div><!-- /.row -->
+      <div class="header-support-info">
+        <div class="media">
+          <span class="media-left support-icon media-middle"
+            ><i class="ec ec-support"></i
+          ></span>
+          <div class="media-body">
+            <span class="support-number"
+              ><strong>Hổ trợ</strong> (+800) 856 800 604</span
+            ><br />
+            <span class="support-email">Email: info@electro.com</span>
+          </div>
+        </div>
+      </div>
     </div>
-</header><!-- #masthead -->
+    <!-- /.row -->
+  </div>
+</header>
+<!-- #masthead -->
 
-<nav *ngIf="categories" class="navbar navbar-primary navbar-full">
-    <div class="container">
-        <ul class="nav navbar-nav departments-menu animate-dropdown">
-            <li class="nav-item dropdown ">
+<nav class="navbar navbar-primary navbar-full">
+  <div class="container">
+    <ul class="nav navbar-nav departments-menu animate-dropdown">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="departments-menu-toggle"
+          >Sản phẩm</a
+        >
+        <ul
+          id="menu-vertical-menu"
+          class="dropdown-menu yamm departments-menu-dropdown"
+          style=""
+        >
+          <li class="highlight menu-item animate-dropdown">
+            <a title="New Arrivals" href="product-category.html"
+              >Sản phẩm mới</a
+            >
+          </li>
 
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="departments-menu-toggle" >Sản phẩm</a>
-                <ul id="menu-vertical-menu" class="dropdown-menu yamm departments-menu-dropdown">
-
-                    <li *ngFor="let cate of categories" id="menu-item" class="menu-item menu-item-has-children animate-dropdown dropdown">
-                        <a title="Accessories" data-hover="dropdown" href="product-category.html" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">{{cate.name}}</a>
-                        <ul role="menu" class=" dropdown-menu">
-                            <li class="nav-title">{{cate.name}}</li>
-                            <li *ngFor="let child of cate.childCategories" class="menu-item animate-dropdown">
-                                <a title="Cases" href="product-category.html">{{child.name}}</a>
-                            </li>
-                        </ul>
-                    </li>
-
-
-                    <li id="menu-item" class="menu-item menu-item-has-children animate-dropdown dropdown">
-                        <a title="Accessories" data-hover="dropdown" href="product-category.html" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">CPU - Bộ vi xử lý</a>
-                        <ul role="menu" class=" dropdown-menu">
-                            <li class="nav-title">CPU - Bộ vi xử lý</li>
-                            <li class="menu-item animate-dropdown"><a title="Cases" href="product-category.html">CPU Intel 8th GEN</a></li>
-                            <li class="menu-item animate-dropdown"><a title="Chargers" href="product-category.html">CPU Intel 9th GEN</a></li>
-                            <li class="menu-item animate-dropdown"><a title="Headphone Accessories" href="product-category.html">CPU Intel 10th GEN (New)</a></li>
-                            <li class="menu-item animate-dropdown"><a title="Headphone Cases" href="product-category.html">CPU Intel X-Series LGA 2066</a></li>
-                            <li class="menu-item animate-dropdown"><a title="Headphones" href="product-category.html">CPU Intel Xeon</a></li>
-                            <li class="menu-item animate-dropdown"><a title="Computer Accessories" href="product-category.html">CPU AMD Ryzen Gen 2 AM4</a></li>
-                            <li class="menu-item animate-dropdown"><a title="Laptop Accessories" href="product-category.html">CPU AMD Ryzen™ Threadripper Gen3</a></li>
-                        </ul>
-                    </li>
-
-
-                   
-                </ul>
-            </li>
+          <li
+          *ngFor="let cate of categories"
+            id="menu-item-2596"
+            class="menu-item menu-item-has-children animate-dropdown dropdown"
+          >
+            <a
+              title="Accessories"
+              data-hover="dropdown"
+              href="product-category.html"
+              data-toggle="dropdown"
+              class="dropdown-toggle"
+              aria-haspopup="true"
+              >{{cate.name}}</a
+            >
+            <ul
+              role="menu"
+              class="dropdown-menu"
+              style="min-height: 443.004px;"
+            >
+              <li class="nav-title">{{cate.name}}</li>
+              <li *ngFor="let child of cate.childCategories" class="menu-item animate-dropdown">
+                <a title="Cases" [routerLink]="['/category', child.id]" routerLinkActive="router-link-active" 
+                  >{{child.name}}</a
+                >
+              </li>
+            </ul>
+          </li>
         </ul>
-        <form class="navbar-search" method="get" action="/">
-            <label class="sr-only screen-reader-text" for="search">Search for:</label>
-            <div class="input-group">
-                <input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="s" placeholder="Tìm kiếm sản phẩm" />
-                <div class="input-group-addon search-categories">
-                    <select name='product_cat' id='product_cat' class='postform resizeselect' >
-                        <option value='0' selected='selected'>All</option>
-                        <option class="level-0" value="laptops-laptops-computers">Mainboard</option>
-                        <option class="level-0" value="ultrabooks-laptops-computers">CPU</option>
-                        <option class="level-0" value="mac-computers-laptops">Ram</option>
-                        <option class="level-0" value="all-in-one-laptops-computers">VGA</option>
-                        <option class="level-0" value="servers">SSD</option>
-                        <option class="level-0" value="peripherals">HDD</option>
-                        <option class="level-0" value="gaming-laptops-computers">PSU</option>
-                        <option class="level-0" value="accessories-laptops-computers">Case</option>
-                        <option class="level-0" value="audio-speakers">Fan</option>
-                    </select>
-                </div>
-                <div class="input-group-btn">
-                    <input type="hidden" id="search-param" name="post_type" value="product" />
-                    <button type="submit" class="btn btn-secondary"><i class="ec ec-search"></i></button>
-                </div>
+      </li>
+    </ul>
+    <form class="navbar-search" method="get" action="/">
+      <label class="sr-only screen-reader-text" for="search">Search for:</label>
+      <div class="input-group">
+        <input
+          type="text"
+          id="search"
+          class="form-control search-field"
+          dir="ltr"
+          value=""
+          name="s"
+          placeholder="Tìm kiếm sản phẩm"
+        />
+        <div class="input-group-addon search-categories">
+          <select
+            name="product_cat"
+            id="product_cat"
+            class="postform resizeselect"
+            style="width: 72px;"
+          >
+            <option value="0" selected="selected">All</option>
+            <option class="level-0" value="laptops-laptops-computers"
+              >Mainboard</option
+            >
+            <option class="level-0" value="ultrabooks-laptops-computers"
+              >CPU</option
+            >
+            <option class="level-0" value="mac-computers-laptops">Ram</option>
+            <option class="level-0" value="all-in-one-laptops-computers"
+              >VGA</option
+            >
+            <option class="level-0" value="servers">SSD</option>
+            <option class="level-0" value="peripherals">HDD</option>
+            <option class="level-0" value="gaming-laptops-computers"
+              >PSU</option
+            >
+            <option class="level-0" value="accessories-laptops-computers"
+              >Case</option
+            >
+            <option class="level-0" value="audio-speakers">Fan</option>
+          </select>
+        </div>
+        <div class="input-group-btn">
+          <input
+            type="hidden"
+            id="search-param"
+            name="post_type"
+            value="product"
+          />
+          <button type="submit" class="btn btn-secondary">
+            <i class="ec ec-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- ============================================================= Header Cart============================================================= -->
+    <ul
+      class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip"
+    >
+      <li class="nav-item dropdown">
+        <a href="cart.html" class="nav-link" data-toggle="dropdown">
+          <i class="ec ec-shopping-bag"></i>
+          <span class="cart-items-count count">3</span>
+          <span class="cart-items-total-price total-price"
+            ><span class="amount">14,670,000đ</span></span
+          >
+        </a>
+        <ul class="dropdown-menu dropdown-menu-mini-cart">
+          <li>
+            <div class="widget_shopping_cart_content">
+              <ul class="cart_list product_list_widget">
+                <li class="mini_cart_item">
+                  <a title="Remove this item" class="remove" href="#">×</a>
+                  <a href="single-product.html">
+                    <img
+                      class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
+                      src="assets/images/ram/4.PNG"
+                      alt=""
+                    />(16GB DDR4 2x8G 3000) Patriot Viper RGB White CL15;
+                  </a>
+
+                  <span class="quantity"
+                    >2 × <span class="amount">2,690,000đ</span></span
+                  >
+                </li>
+
+                <li class="mini_cart_item">
+                  <a title="Remove this item" class="remove" href="#">×</a>
+                  <a href="single-product.html">
+                    <img
+                      class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
+                      src="assets/images/psu/3.PNG"
+                      alt=""
+                    />( 1200W Platinum ) Nguồn ASUS Rog Thor 1200P 80 PLUS®
+                    Platinum;
+                  </a>
+
+                  <span class="quantity"
+                    >1 × <span class="amount">9,290,000đ</span></span
+                  >
+                </li>
+              </ul>
+              <!-- end product list -->
+
+              <p class="total">
+                <strong>Subtotal:</strong>
+                <span class="amount">14,670,000đ</span>
+              </p>
+
+              <p class="buttons">
+                <a class="button wc-forward" href="cart.html">Xem giỏ hàng</a>
+                <a class="button checkout wc-forward" href="checkout.html"
+                  >Thanh toán</a
+                >
+              </p>
             </div>
-        </form>
-
-         <!-- ============================================================= Header Cart============================================================= -->
-         <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
-            <li class="nav-item dropdown">
-                <a href="cart.html" class="nav-link" data-toggle="dropdown">
-                    <i class="ec ec-shopping-bag"></i>
-                    <span class="cart-items-count count">3</span>
-                    <span class="cart-items-total-price total-price"><span class="amount">14,670,000đ</span></span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-mini-cart">
-                    <li>
-                        <div class="widget_shopping_cart_content">
-
-                            <ul class="cart_list product_list_widget ">
-
-
-                                <li class="mini_cart_item">
-                                    <a title="Remove this item" class="remove" href="#">×</a>
-                                    <a href="single-product.html">
-                                        <img class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" src="assets/images/ram/4.PNG" alt="">(16GB DDR4 2x8G 3000) Patriot Viper RGB White CL15;
-                                    </a>
-
-                                    <span class="quantity">2 × <span class="amount">2,690,000đ</span></span>
-                                </li>
-
-
-                                <li class="mini_cart_item">
-                                    <a title="Remove this item" class="remove" href="#">×</a>
-                                    <a href="single-product.html">
-                                        <img class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" src="assets/images/psu/3.PNG" alt="">( 1200W Platinum ) Nguồn ASUS Rog Thor 1200P 80 PLUS® Platinum;
-                                    </a>
-
-                                    <span class="quantity">1 × <span class="amount">9,290,000đ</span></span>
-                                </li>
-                
-                            </ul><!-- end product list -->
-
-
-                            <p class="total"><strong>Subtotal:</strong> <span class="amount">14,670,000đ</span></p>
-
-
-                            <p class="buttons">
-                                <a class="button wc-forward" href="cart.html">Xem giỏ hàng</a>
-                                <a class="button checkout wc-forward" href="checkout.html">Thanh toán</a>
-                        
-                                
-                            </p>
-
-
-                        </div>
-                    </li>
-                </ul>
-            </li>
+          </li>
         </ul>
-        <!-- ============================================================= Header Cart : End============================================================= -->
-        
-        <ul class="navbar-wishlist nav navbar-nav pull-right flip">
-            <li class="nav-item">
-                <a href="wishlist.html" class="nav-link"><i class="ec ec-favorites"></i></a>
-            </li>
-        </ul>
-    </div>
+      </li>
+    </ul>
+    <!-- ============================================================= Header Cart : End============================================================= -->
+
+    <ul class="navbar-wishlist nav navbar-nav pull-right flip">
+      <li class="nav-item">
+        <a href="wishlist.html" class="nav-link"
+          ><i class="ec ec-favorites"></i
+        ></a>
+      </li>
+    </ul>
+  </div>
 </nav>
+
+

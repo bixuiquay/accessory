@@ -31,23 +31,23 @@ export class ProductCreateRequest {
   
   @Allow()
   @ApiProperty({ example: 500000 })
-  pricesale: number;
+  priceSale: number;
 
   @Allow()
-  @ApiProperty({ example: 500000 })
-  isfeature: boolean;
+  @ApiProperty({ example: false })
+  isFeatured: boolean;
 
   @Allow()
-  @ApiProperty({ example: 500000 })
-  islastminute: boolean;
+  @ApiProperty({ example: false })
+  isLastMinute: boolean;
 
   @Allow()
-  @ApiProperty({ example: 500000 })
-  isflashsale: boolean;
+  @ApiProperty({ example: false })
+  isFlashSale: boolean;
 
   @Allow()
-  @ApiProperty({ example: 500000 })
-  iswishlist: number;
+  @ApiProperty({ example: true })
+  isWishlist: boolean;
 
   @Allow()
   @ApiProperty({ example: 154 })
@@ -93,19 +93,19 @@ export class ProductResponse extends AuditableResponse {
   price: number;
 
   @ApiResponseProperty({ example: '123123' })
-  pricesale: number;
+  priceSale: number;
 
   @ApiResponseProperty({ example: '1 or 2' })
-  isfeature: boolean;
+  isFeatured: boolean;
 
   @ApiResponseProperty({ example: '1 or 2' })
-  islastminute: boolean;
+  isLastMinute: boolean;
 
   @ApiResponseProperty({ example: '1 or 2' })
-  isflashsale: boolean;
+  isFlashSale: boolean;
 
   @ApiResponseProperty({ example: '5 like' })
-  iswishlist: number;
+  isWishlist: number;
 
   @ApiResponseProperty({ example: 'addad' })
   quantity: number;

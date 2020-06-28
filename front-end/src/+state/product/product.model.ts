@@ -14,6 +14,9 @@ export interface FilterProductOptions extends PaginationOptions {
   limit?: number;
   brandId?: number;
   childCategoryId?: number;
+  isFeatured: boolean;
+  isFlashSale: boolean;
+  isWishlist: boolean;
   sortBy?: string;
   sortDir?: 'asc' | 'desc';
 }
