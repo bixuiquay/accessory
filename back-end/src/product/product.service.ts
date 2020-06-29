@@ -34,7 +34,7 @@ export class ProductService {
       brandId,
       sortBy,
       sortDir,
-      searchKeyword
+      searchKeyword,
     } = filter;
     let { page, limit } = filter;
 
@@ -56,6 +56,18 @@ export class ProductService {
       queryBuilder.andWhere('LOWER(product.name) like :search or LOWER(product.description) like :search', {search: `%${searchKeyword.trim().toLowerCase()}%`})
     }
 
+    if (filter.isFeatured) {
+      queryBuilder.andWhere('product.isFeatured =:isFeatured', { isFeatured: true});
+    }
+
+    if (filter.isFlashSale) {
+      queryBuilder.andWhere('product.isFlashSale = :isFlashSale', { isFlashSale: true });
+    }
+
+    if (filter.isWishlist) {
+      queryBuilder.andWhere('product.isWishlist = :isWishlist', {isWishlist: true});
+    }
+
     /* Order and sort by */
     if (sortBy && sortDir) {
       sortDir.toUpperCase() === 'DESC'
@@ -75,6 +87,22 @@ export class ProductService {
     });
 
     return entities
+  }
+
+  async get(id: string): Promise<any> {
+    const queryBuilder = this.productRepository.createQueryBuilder(
+      'product'
+    ).leftJoinAndSelect("product.brand", "brand")
+    .leftJoinAndSelect("product.category", "category")
+    .where('product.id =:id', {id});
+
+    const entity = await queryBuilder.getOne();
+    const imageHost = process.env.IMAGE_HOST;
+    return {
+      ...entity,
+      image: `${imageHost}/${entity.image}`,
+      listImage: entity.listImage.map(x => `${imageHost}/${x}`)
+    };
   }
 
   async addProduct(createProduct: ProductCreateRequest): Promise<ProductResponse> {

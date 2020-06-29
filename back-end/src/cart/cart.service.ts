@@ -15,7 +15,8 @@ export class CartService {
     @InjectRepository(Cart)
     private readonly repository: Repository<Cart>,
     @InjectRepository(CartProduct)
-    private readonly cartProductRepository: Repository<Cart>,
+    private readonly cartProductRepository: Repository<CartProduct>,
+    private readonly contextService: ContextService,
       ) {}
 
   getAll(): Promise<any> {
@@ -30,7 +31,7 @@ export class CartService {
     const exitedData = await queryBuilder.getMany();
     if (!exitedData.length) {
       const entity = {
-         client: new Client({id: cartCreate.clientId})
+        client: new Client({id: cartCreate.clientId})
       }
       return this.repository.save(entity);
     }
@@ -38,27 +39,26 @@ export class CartService {
     return exitedData[0];
   }
 
-  // async update(id: number, update: CartUpdateRequest): Promise<any> {
-  //   const {sub, username } = this.contextService.user;
-  //   const queryBuilder = this.repository.createQueryBuilder('cart');
-  //   queryBuilder.where('cart.client.id =:clientId', {clientId: sub});
-  //   queryBuilder.andWhere('cart.id =:id', {id: id});
-  //   //to do search cart is not ordered queryBuilder.andWhere('cart.ordered = false');
+  async update(id: number, update: CartUpdateRequest): Promise<any> {
+    const {sub, username } = this.contextService.user;
+    const queryBuilder = this.repository.createQueryBuilder('cart');
+    queryBuilder.where('cart.client.id =:clientId', {clientId: sub});
+    queryBuilder.andWhere('cart.id =:id', {id: id});
+    //to do search cart is not ordered queryBuilder.andWhere('cart.ordered = false');
 
-  //   const exitedData = await queryBuilder.getMany();
-  //   if (exitedData && !exitedData.length) {
-  //     throw new NotFoundException();
-  //   }
-  //   const cart = exitedData[0];
+    const exitedData = await queryBuilder.getMany();
+    if (exitedData && !exitedData.length) {
+      throw new NotFoundException();
+    }
+    const cart = exitedData[0];
     
-  //   const saveCartProduct = {
-  //     cart: new Cart({id}),
-  //     product: new Product({id: update.productId}),
-  //     quantity: update.quantity
-  //   };
-  //   return await this.cartProductrepository.save({saveCartProduct});
-    
-  // }
+    const saveCartProduct = {
+      cart: new Cart({id}),
+      product: new Product({id: update.productId}),
+      quantity: update.quantity
+    };
+    return await this.cartProductRepository.save(saveCartProduct);
+  }
 
   // delete(id: number): Promise<any>{
   //   return this.repository.delete(

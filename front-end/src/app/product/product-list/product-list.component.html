@@ -8,14 +8,6 @@
                     <!-- ============================================================= Header Slider============================================================= -->
                     <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm owl-loaded owl-drag">
 
-                        <!-- /.item -->
-
-
-                        <!-- /.item -->
-
-                        <!-- /.item -->
-
-
                     <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-3034px, 0px, 0px); transition: all 0s ease 0s; width: 10619px;"><div class="owl-item cloned" style="width: 1517px;"><div class="item" style="background-image: url(assets/images/banner/2.PNG);">
                             <div class="container">
                                 <div class="row">
@@ -213,207 +205,31 @@
                                     <div class="woocommerce columns-3">
 
                                         <ul class="products columns-3">
-                                            <li class="product first">
+                                            <li *ngFor="let product of featuredProducts; let i = index" [class]="getProductClass(i)">
                                                 <div class="product-outer" style="height: 309px;">
                                                     <div class="product-inner">
                                                         <span class="loop-product-categories"><a href="product-category.html" rel="tag">Mainboard</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>Asrock H310CM HDV LGA 1151v2</h3>
+                                                        <a [routerLink]="['/product', product.id]" routerLinkActive="router-link-active">
+                                                            <h3>{{ product.name }}</h3>
                                                             <div class="product-thumbnail">
-                                                                <img src="assets/images/mainboard/1.PNG" class="img-responsive" alt="">
+                                                                <img [src]="product.image" class="img-responsive" alt="">
                                                             </div>
                                                         </a>
 
                                                         <div class="price-add-to-cart">
                                                             <span class="price">
                                                                 <span class="electro-price" style="position: relative;">
-                                                                    <ins><span class="amount"> 1,390,000đ</span></ins>
+                                                                    <ins><span class="amount">{{product.price}}</span></ins>
                                                                     <del style="position:absolute;left:0;top:-14px;"><span class="amount">2,299,000đ</span></del>
                                                                     <span class="amount"> </span>
                                                                 </span>
                                                             </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
+                                                            <a rel="nofollow" class="button add_to_cart_button">Add to cart</a>
                                                         </div><!-- /.price-add-to-cart -->
 
                                                         <div class="hover-area">
                                                             <div class="action-buttons">
-
                                                                 <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                               
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li><!-- /.products -->
-
-
-                                            <li class="product ">
-                                                <div class="product-outer" style="height: 309px;">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Mainboard</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>Asus H310M-F R2.0 LGA1151v2</h3>
-                                                            <div class="product-thumbnail">
-                                                                <img src="assets/images/mainboard/2.PNG" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price" style="position: relative;">
-                                                                    <ins><span class="amount"> 1,399,000đ</span></ins>
-                                                                    <del style="position:absolute;left:0;top:-14px;"><span class="amount">1,699,000đ</span></del>
-                                                                    <span class="amount"> </span>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li><!-- /.products -->
-
-
-                                            <li class="product last">
-                                                <div class="product-outer" style="height: 309px;">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Mainboard</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>MSI H310M Pro-VDH Plus LGA1151v2</h3>
-                                                            <div class="product-thumbnail">
-                                                                <img src="assets/images/mainboard/3.PNG" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount"> </span></ins>
-                                                                    <span class="amount"> 1,490,000đ</span>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li><!-- /.products -->
-
-
-                                            <li class="product first">
-                                                <div class="product-outer" style="height: 309px;">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Mainboard</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>Asus Prime H310M-E LGA1151v2</h3>
-                                                            <div class="product-thumbnail">
-                                                                <img src="assets/images/mainboard/4.PNG" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price" style="position: relative;">
-                                                                    <ins><span class="amount"> 1,690,000đ</span></ins>
-                                                                    <del style="position:absolute;left:0;top:-14px;"><span class="amount">1,790,000đ</span></del>
-                                                                    <span class="amount"> </span>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li><!-- /.products -->
-
-
-                                            <li class="product ">
-                                                <div class="product-outer" style="height: 309px;">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">CPU</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>Intel Core i5 10400F / 12MB / 2.9GHz / 6 Nhân 12 Luồng
-                                                            </h3>
-                                                            <div class="product-thumbnail">
-                                                                <img src="assets/images/CPU/1.PNG" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount"> </span></ins>
-                                                                    <span class="amount"> 1,509,000đ</span>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li><!-- /.products -->
-
-
-                                            <li class="product last">
-                                                <div class="product-outer" style="height: 309px;">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Ram</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>(8GB DDR4 1x8G 2666) RAM PNY XLR8 GAMING</h3>
-                                                            <div class="product-thumbnail">
-                                                                <img src="assets/images/ram/1.PNG" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount"> </span></ins>
-                                                                    <span class="amount"> 890,000đ</span>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                                
                                                             </div>
                                                         </div>
                                                     </div><!-- /.product-inner -->
@@ -426,222 +242,36 @@
                                 <div class="tab-pane active" id="tab-products-2" role="tabpanel" aria-expanded="true">
                                     <div class="woocommerce columns-3">
                                         <ul class="products columns-3">
-
-                                            <li class="product first">
+                                            <li *ngFor="let product of wishlistProducts; let i = index" [class]="getProductClass(i)">
                                                 <div class="product-outer" style="height: 309px;">
                                                     <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">HDD</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>HDD WD Blue 1TB 7200rpm</h3>
+                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Mainboard</a></span>
+                                                        <a [routerLink]="['/product', product.id]" routerLinkActive="router-link-active">
+                                                            <h3>{{ product.name }}</h3>
                                                             <div class="product-thumbnail">
-
-                                                                <img src="assets/images/hdd/1.PNG" alt="">
-
+                                                                <img [src]="product.image" class="img-responsive" alt="">
                                                             </div>
                                                         </a>
 
                                                         <div class="price-add-to-cart">
                                                             <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount">980,000đ</span></ins>
-                                                                    <del><span class="amount">1,100,000đ</span></del>
+                                                                <span class="electro-price" style="position: relative;">
+                                                                    <ins><span class="amount">{{product.price}}</span></ins>
+                                                                    <del style="position:absolute;left:0;top:-14px;"><span class="amount">2,299,000đ</span></del>
+                                                                    <span class="amount"> </span>
                                                                 </span>
                                                             </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
+                                                            <a rel="nofollow" class="button add_to_cart_button">Add to cart</a>
                                                         </div><!-- /.price-add-to-cart -->
 
                                                         <div class="hover-area">
                                                             <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist">
-                                                                    Thích</a>
-
-                                                                <a href="#" class="add-to-compare-link">So sánh</a>
+                                                                <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
                                                             </div>
                                                         </div>
                                                     </div><!-- /.product-inner -->
                                                 </div><!-- /.product-outer -->
-                                            </li>
-
-                                            <li class="product ">
-                                                <div class="product-outer" style="height: 309px;">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Fan</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>XIGMATEK GALAXY II ELITE - AY120 ARGB</h3>
-                                                            <div class="product-thumbnail">
-
-                                                                <img src="assets/images/fan/1.PNG" alt="">
-
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount">590,000đ</span></ins>
-                                                                    <del><span class="amount">690,000đ</span></del>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist">
-                                                                    Thích</a>
-
-                                                                <a href="#" class="add-to-compare-link">So sánh</a>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li>
-
-                                            <li class="product last">
-                                                <div class="product-outer" style="height: 309px;">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Fan</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>Fan XIGMATEK X9 Red Led</h3>
-                                                            <div class="product-thumbnail">
-
-                                                                <img src="assets/images/fan/2.PNG" alt="">
-
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount">100,000đ</span></ins>
-                                                                    <del><span class="amount">120,000đ</span></del>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist">
-                                                                    Thích</a>
-
-                                                                <a href="#" class="add-to-compare-link">So sánh</a>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li>
-
-                                            <li class="product first">
-                                                <div class="product-outer" style="height: 309px;">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Fan</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>Fan LED 1st Player R1 120mm RGB</h3>
-                                                            <div class="product-thumbnail">
-
-                                                                <img src="assets/images/fan/3.PNG" alt="">
-
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount">100,000đ</span></ins>
-                                                                    <del><span class="amount">150,000đ</span></del>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist">
-                                                                    Thích</a>
-
-                                                                <a href="#" class="add-to-compare-link">So sánh</a>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li>
-
-                                            <li class="product ">
-                                                <div class="product-outer" style="height: 309px;">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Ram</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>(8G DDR4 1x8G 3000 cas16 ) GSKILL TRIDENT Z RGB</h3>
-                                                            <div class="product-thumbnail">
-
-                                                                <img src="assets/images/ram/2.PNG" alt="">
-
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount">1,350,000đ</span></ins>
-                                                                    <del><span class="amount">1,790,000đ</span></del>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist">
-                                                                    Thích</a>
-
-                                                                <a href="#" class="add-to-compare-link">So sánh</a>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li>
-
-                                            <li class="product last">
-                                                <div class="product-outer" style="height: 309px;">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Ram</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>(16G DDR4 2x8G 3000 cas 16) G.SKILL Trident Z RGB</h3>
-                                                            <div class="product-thumbnail">
-
-                                                                <img src="assets/images/ram/3.PNG" alt="">
-
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount">2,700,000đ</span></ins>
-                                                                    <del><span class="amount">3,700,000đ</span></del>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist">
-                                                                    Thích</a>
-
-                                                                <a href="#" class="add-to-compare-link">So sánh</a>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li>
+                                            </li><!-- /.products -->
                                         </ul>
                                     </div>
                                 </div>
@@ -652,209 +282,31 @@
                                     <div class="woocommerce columns-3">
 
                                         <ul class="products columns-3">
-
-
-                                            <li class="product first">
-                                                <div class="product-outer">
+                                            <li *ngFor="let product of saleProducts; let i = index" [class]="getProductClass(i)">
+                                                <div class="product-outer" style="height: 309px;">
                                                     <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">PSU</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>( 500W ) Nguồn máy tính Cooler Master MWE 500 White v2
-                                                            </h3>
+                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Mainboard</a></span>
+                                                        <a [routerLink]="['/product', product.id]" routerLinkActive="router-link-active">
+                                                            <h3>{{ product.name }}</h3>
                                                             <div class="product-thumbnail">
-                                                                <img src="assets/images/psu/1.PNG" data-echo="assets/images/psu/1.PNG" class="img-responsive" alt="">
+                                                                <img [src]="product.image" class="img-responsive" alt="">
                                                             </div>
                                                         </a>
 
                                                         <div class="price-add-to-cart">
                                                             <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount">1,000,000đ</span></ins>
-                                                                    <del><span class="amount">1,500,000đ</span></del>
+                                                                <span class="electro-price" style="position: relative;">
+                                                                    <ins><span class="amount">{{product.price}}</span></ins>
+                                                                    <del style="position:absolute;left:0;top:-14px;"><span class="amount">2,299,000đ</span></del>
                                                                     <span class="amount"> </span>
                                                                 </span>
                                                             </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
+                                                            <a rel="nofollow" class="button add_to_cart_button">Add to cart</a>
                                                         </div><!-- /.price-add-to-cart -->
 
                                                         <div class="hover-area">
                                                             <div class="action-buttons">
-
                                                                 <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                                <a href="compare.html" class="add-to-compare-link">So sánh</a>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li><!-- /.products -->
-
-
-                                            <li class="product ">
-                                                <div class="product-outer">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">PSU</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>( 650W ) Nguồn máy tính SilverStone ST65F-ES230 80 Plus</h3>
-                                                            <div class="product-thumbnail">
-                                                                <img src="assets/images/psu/2.PNG" data-echo="assets/images/psu/2.PNG" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount"> 1,190,000đ</span></ins>
-                                                                    <del><span class="amount">1,480,000đ</span></del>
-                                                                    <span class="amount"> </span>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li><!-- /.products -->
-
-
-                                            <li class="product last">
-                                                <div class="product-outer">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">VGA</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>ROG Strix GeForce® RTX 2080 Ti OC White Gaming 11GB GDDR6</h3>
-                                                            <div class="product-thumbnail">
-                                                                <img src="assets/images/vga/1.PNG" data-echo="assets/images/vga/1.PNG" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount"> </span></ins>
-                                                                    <span class="amount"> 43,900,000đ</span>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li><!-- /.products -->
-
-
-                                            <li class="product first">
-                                                <div class="product-outer">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Fan</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>Tản nhiệt AIO Cooler Master MasterLiquid ML120R RGB</h3>
-                                                            <div class="product-thumbnail">
-                                                                <img src="assets/images/fan/4.png" data-echo="assets/images/fan/4.png" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount"> 2,290,000đ</span></ins>
-                                                                    <del><span class="amount">2,490,000đ</span></del>
-                                                                    <span class="amount"> </span>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li><!-- /.products -->
-
-
-                                            <li class="product ">
-                                                <div class="product-outer">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">Fan</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>Tản nhiệt nước AIO ROG Strix LC 360 RGB White Edition</h3>
-                                                            <div class="product-thumbnail">
-                                                                <img src="assets/images/fan/5.PNG" data-echo="assets/images/fan/5.PNG" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount"> </span></ins>
-                                                                    <span class="amount"> 7,600,000đ</span>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- /.product-inner -->
-                                                </div><!-- /.product-outer -->
-                                            </li><!-- /.products -->
-
-
-                                            <li class="product last">
-                                                <div class="product-outer">
-                                                    <div class="product-inner">
-                                                        <span class="loop-product-categories"><a href="product-category.html" rel="tag">SSD</a></span>
-                                                        <a href="single-product.html">
-                                                            <h3>SSD GIGABYTE M.2 PCIe SSD 256GB</h3>
-                                                            <div class="product-thumbnail">
-                                                                <img src="assets/images/ssd/1.PNG" data-echo="assets/images/ssd/1.PNG" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-
-                                                        <div class="price-add-to-cart">
-                                                            <span class="price">
-                                                                <span class="electro-price">
-                                                                    <ins><span class="amount"> </span></ins>
-                                                                    <span class="amount">1,390,000đ</span>
-                                                                </span>
-                                                            </span>
-                                                            <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
-                                                        </div><!-- /.price-add-to-cart -->
-
-                                                        <div class="hover-area">
-                                                            <div class="action-buttons">
-
-                                                                <a href="#" rel="nofollow" class="add_to_wishlist"> Thích</a>
-
-                                                                
                                                             </div>
                                                         </div>
                                                     </div><!-- /.product-inner -->

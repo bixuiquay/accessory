@@ -9,6 +9,10 @@ import { RouterModule, Routes } from "@angular/router";
 
 const appRoutes: Routes = [
   { path: '',   redirectTo: '/product', pathMatch: 'full' },
+  {
+    path: 'user',
+    loadChildren: () => import('./client/client.module').then(m => m.ClientModule),
+  },
   // { path: '**', component: PageNotFoundComponent }
 ];
 

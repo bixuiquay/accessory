@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { isEmpty } from 'lodash-es';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { IPagination, Pagination } from 'src/core/src/lib/models/pagination.model';
 import { HttpService } from 'src/core/src/lib/utils/http/http.service';
 import { santinizeObject } from 'src/core/src/lib/utils/objects';
@@ -23,21 +24,14 @@ export class ProductService {
    * @return {Observable<Pagination<FilterProductOptions[]>>}
    */
   getAll(filter: FilterProductOptions): Observable<Pagination<Product>> {
-    // if (isEmpty(filter)) {
-    //   filter.sortBy= 'updatedAt';
-    //   filter.sortDir = 'desc';
-      
-    // }
-
     return this.http.get(API_PRODUCT, { params: santinizeObject(filter) });
   }
 
-  // update(item: Partial<CustomerMerchant>):Observable<CustomerMerchant> {
-  //   const formData = item;
-  //   return this.http.patch(`${API_CUSTOMER_MERCHANT}/update`, formData).pipe(
-  //     catchError((error) => {
-  //       return throwError(error);
-  //     })
-  //   );
-  // }
+  get(id:string):Observable<Product> {
+    return this.http.get(`${API_PRODUCT}/${id}`).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
 }

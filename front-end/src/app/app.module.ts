@@ -8,6 +8,7 @@ import { Router, RouterModule } from '@angular/router';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { AuthenticationStateModule } from 'src/+state/authentication';
 import { CategoryStateModule } from 'src/+state/category/category.state';
 import { ChildCategoryStateModule } from 'src/+state/child-category/child-category.state';
 import { ProductStateModule } from 'src/+state/product/product.state';
@@ -27,8 +28,8 @@ import { ProductModule } from './product/product.module';
     AppFooterComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    AuthenticationStateModule.forChild(),
     TabsModule.forRoot(),
     ProductStateModule.forChild(),
     CategoryStateModule.forChild(),

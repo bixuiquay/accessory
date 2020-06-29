@@ -17,6 +17,8 @@ export class AuthService {
     private readonly repository: Repository<User>,
     @InjectRepository(UserRole)
     private readonly roleRepository: Repository<UserRole>,
+    @InjectRepository(Client)
+    private readonly clientRepository: Repository<Client>,
   ) {}
 
   async validateUser(username: string, pass: string): Promise<User> {
@@ -35,7 +37,12 @@ export class AuthService {
   }
 
   async findUser(id: string) {
-    return await this.repository.findOne({ id});
+    const e = await this.repository.findOne({id});
+    if (!e) {
+      return this.clientRepository.findOne({id});
+    }
+
+    return e;
   }
 
   async login(loginRequest: LoginRequest) {

@@ -1,0 +1,89 @@
+<div class="container">
+    <nav class="woocommerce-breadcrumb"><a href="home.html">Trang chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Tài khoản</nav><!-- .woocommerce-breadcrumb -->
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+            <article id="post-8" class="hentry">
+
+                <div class="entry-content">
+                    <div class="woocommerce">
+                        <div class="customer-login-form">
+                            <span class="or-text">or</span>
+
+                            <div class="col2-set" id="customer_login">
+
+                                <div class="col-1">
+                                    <h2>Đăng nhập</h2>
+
+                                    <form #ngForm="ngForm" autocomplete="off" [formGroup]="loginForm" class="login">
+                                        <!-- <form #ngForm="ngForm" [formGroup]="form" class="m-b" autocomplete="off"> -->
+
+                                        <p class="form-row form-row-wide">
+                                            <label for="username">Tài khoản hoặc email<span class="required">*</span></label>
+                                            <input type="text" class="input-text" formControlName="email" id="username" value="">
+                                        </p>
+
+                                        <p class="form-row form-row-wide">
+                                            <label for="password">Mật khẩu<span class="required">*</span></label>
+                                            <input class="input-text" type="password" formControlName="password" id="password">
+                                        </p>
+
+                                        <p class="form-row">
+                                            <input class="button" type="submit" (click)="submitLogin()" value="Đăng nhập" name="login">
+                                            <label for="rememberme" class="inline"><input name="rememberme" type="checkbox" id="rememberme" value="forever">Ghi nhớ đăng nhập</label>
+                                        </p>
+
+                                        <p class="lost_password"><a href="login-and-register.html">Quên mật khẩu</a></p>
+
+                                    </form>
+
+
+                                </div><!-- .col-1 -->
+
+                                <div class="col-2">
+
+                                    <h2>Đăng ký</h2>
+
+                                    <form method="post" class="register">
+
+                                        <p class="form-row form-row-wide">
+                                            <label for="reg_email">Địa chỉ email<span class="required">*</span></label>
+                                            <input type="email" class="input-text" name="email" id="reg_email" value="">
+                                        </p>
+
+                                        <p class="form-row form-row-wide">
+                                            <label for="password">Mật khẩu<span class="required">*</span></label>
+                                            <input class="input-text" type="password" name="password" id="password">
+                                        </p>
+
+                                        <p class="form-row form-row-wide">
+                                            <label for="retry-password">Nhập lại Mật khẩu<span class="required">*</span></label>
+                                            <input class="input-text" type="password" name="retry-password" id="password">
+                                        </p>
+
+                                        <p class="form-row"><input type="submit" class="button" name="register" value="Đăng ký"></p>
+
+                                        <div class="register-benefits">
+                                            <h3> Đăng ký ngay hôm nay và bạn sẽ có thể:</h3>
+                                            <ul>
+                                                <li>Thanh toán nhanh chóng</li>
+                                                <li>Kiểm tra đơn hàng nhanh chóng</li>
+                                                <li>Lưu trữ tất cả các đơn thanh toán</li>
+                                            </ul>
+                                        </div>
+
+                                    </form>
+
+                                </div><!-- .col-2 -->
+
+                            </div><!-- .col2-set -->
+
+                        </div><!-- /.customer-login-form -->
+                    </div><!-- .woocommerce -->
+                </div><!-- .entry-content -->
+
+            </article><!-- #post-## -->
+
+        </main><!-- #main -->
+    </div><!-- #primary -->
+
+</div>

@@ -35,7 +35,7 @@ export class Product extends AuditableEntity {
   isFlashSale: boolean; 
 
   @Column( { nullable: true} )
-  isWishlist: number; // 
+  isWishlist: boolean; // 
 
   @Column({ type: 'integer'})
   quantity: number;

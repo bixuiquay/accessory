@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   static KEY_TOKEN = 'token';
   static KEY_USER = 'user';
+  static KEY_CART = 'cart';
   static tokenGetter(): string {
     return localStorage.getItem(AuthService.KEY_TOKEN);
   }
@@ -36,6 +37,20 @@ export class AuthService {
    */
   set user(user: any) {
     this.setItem(AuthService.KEY_USER, user);
+  }
+
+  /**
+   * Cart getter
+   */
+  get cart(): any {
+    return this.getItem(AuthService.KEY_CART);
+  }
+
+  /**
+   * Cart setter
+   */
+  set cart(cart: any) {
+    this.setItem(AuthService.KEY_CART, cart);
   }
 
   /**

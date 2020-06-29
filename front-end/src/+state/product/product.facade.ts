@@ -36,18 +36,21 @@ export class ProductFacade {
     );
   }
 
-  // /**
-  //  * Update user
-  //  *
-  //  */
-  // update(item: Partial<Product>): Observable<Product> {
-  //   this.store.setLoading(true);
+  /**
+   *  get a prđuct
+   *
+   */
+  get(id: string): Observable<Product> {
+    this.store.setLoading(true);
 
-  //   return this.service.update(item).pipe(
-  //     tap((data: Product) => this.store.update(data.id, data)),
-  //     tap(() => this.store.setLoading(false))
-  //   )
-  // }
+    return this.service.get(id).pipe(
+      tap((data: Product) => {
+        console.log('data: dkdkdkdk', data);
+        this.store.update(id, data);
+      }),
+      tap(() => this.store.setLoading(false))
+    )
+  }
 
   // /**
   //  * Get all countries

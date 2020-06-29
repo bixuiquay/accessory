@@ -62,10 +62,12 @@ export class ClientService {
     const queryBuilder = this.repository.createQueryBuilder('client').where({email});
     const entities = await queryBuilder.getMany();
     const entity = entities[0];
+    if (!entity) {
+      return null;
+    }
 
     const check = await bcrypt.compare(pass, entity.passwordHash);
-
-    if (entity && check) {
+    if (check) {
       const { ...result } = entity;
       return result;
     }
@@ -91,7 +93,14 @@ export class ClientService {
     const cart = await this.cartService.add({clientId: id});
     return {
       access_token: this.jwtService.sign(payload),
-      cart
+      cart,
+      user: {
+        username: userValid.username,
+        phone: userValid.phone,
+        firstName: userValid.firstName,
+        lastName: userValid.lastName,
+        address: userValid.address
+      }
     };
   }
 

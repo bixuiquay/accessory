@@ -9,17 +9,23 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/database/entities/user.entity';
 import { JwtAuthGuard } from './guards';
 import { UserRole } from 'src/database';
+import { ClientService } from 'src/client/client.service';
+import { CartService } from 'src/cart/cart.service';
+import { Client } from 'src/database/entities/client.entity';
+import { Cart } from 'src/database/entities/cart.entity';
+import { CartProduct } from 'src/database/entities/cart-product.entity';
+import { ContextService } from 'src/core/services';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User, UserRole]),
+    TypeOrmModule.forFeature([User, UserRole, Client, Cart, CartProduct ]),
     PassportModule,
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '7h' },
     }),
   ],
-  providers: [AuthService, JwtStrategy, JwtAuthGuard],
+  providers: [AuthService, ClientService, CartService, ContextService, JwtStrategy, JwtAuthGuard],
   exports: [AuthService, JwtAuthGuard],
   controllers: [AuthController],
 })

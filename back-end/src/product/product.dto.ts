@@ -77,6 +77,18 @@ export class ProductPaginatedRequest extends BasePaginatedRequest<Product>  {
   @Allow()
   @ApiProperty({ description: 'search key', required: false })
   searchKeyword: string;
+
+  @Allow()
+  @ApiProperty({ description: 'search by isFeatured', required: false, example: false })
+  isFeatured: boolean;
+
+  @Allow()
+  @ApiProperty({ description: 'search by isWishlist', required: false, example: false })
+  isWishlist: boolean;
+
+  @Allow()
+  @ApiProperty({ description: 'search by isFlashSale', required: false, example: false })
+  isFlashSale: boolean;
 }
 
 export class ProductResponse extends AuditableResponse {

@@ -1,0 +1,175 @@
+<nav class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item" style="float: none;">
+            <a class="nav-link active" href="#tab-products-1" data-toggle="tab" aria-expanded="true">Đơn hàng </a>
+          </li>
+   
+          <li class="nav-item">
+            <a class="nav-link" href="#tab-products-2" data-toggle="tab" aria-expanded="false">Thông tin cá nhân</a>
+          </li>
+        </ul>
+
+      </div>
+      <div class="col-sm-9 col-md-10 offset-sm-3 offset-md-2 tab-content">
+        <div class="row tab-pane fade active in" id="tab-products-1" role="tabpanel" aria-expanded="true">
+            <div class="col-md-12">
+                <div class="Order-list">
+                    <div class="panel panel-default">
+                        <!-- <div class="panel-heading">
+                            <h4>User Order List : </h4>
+                        </div> -->
+                        <div class="panel-body">
+                            <div class="alert alert-info">
+                                Đơn hàng của tôi
+                            </div>
+                            <hr>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Ngày mua</th>
+                                            <th>Sản phẩm</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Trạng thái đơn hàng</th>
+                                            <th>Lựa chọn</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td># 26090</td>
+                                            <td>10/06/2020</td>
+                                            <td>Asus Prime H310M-E LGA1151v2</td>
+                                            <td>1,390,000đ</td>
+                                            <td><label class="label label-success">Đang giao</label></td>
+                                            <td> <a href="#" class="btn btn-xs btn-warning">View</a> </td>
+                                        </tr>
+                                        <tr>
+                                            <td># 2501</td>
+                                            <td>10/05/2020 </td>
+                                            <td>Tản nhiệt nước AIO ROG Strix LC 360 RGB White Edition</td>
+                                            <td>7,600,000</td>
+                                            <td><label class="label label-success">Đã giao</label></td>
+                                            <td> <a href="#" class="btn btn-xs btn-warning">View</a> </td>
+                                        </tr>
+            
+      
+                                        <tr>
+                                            <td># 1808</td>
+                                            <td>11/05/2020</td>
+                                            <td>
+                                                ROG Strix GeForce® RTX 2080 Ti OC White Gaming 11GB GDDR6
+                                            </td>
+                                            <td>
+                                                43,900,000đ
+                                            </td>
+                                            <td>
+                                                <label class="label label-info">Trả hàng</label></td>
+                                    
+                                             <td> <a href="#" class="btn btn-xs btn-danger">View</a> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row tab-pane fade" id="tab-products-2" role="tabpanel" aria-expanded="false">
+                <main class="content">
+                    <div class="alert alert-info">
+                        Thông tin cá nhân
+                    </div>
+                    <hr>
+                    <form>
+                      <ul>                               
+                        <li>
+                          <fieldset class="material">
+                            <div>
+                                <label>Họ</label>
+                                <input required="<%= true %>" type="text" value="Phùng">
+                              <hr>
+                            </div>
+                          </fieldset>
+                        </li>
+                        <li>
+                            <fieldset class="material">
+                              <div>
+                                <label>Tên</label>
+                                <input required="<%= true %>" type="text" value="Quang">
+                                <hr>
+                              </div>
+                            </fieldset>
+                        </li>
+                        <li>
+                          <fieldset class="material">
+                            <div>
+                                <label>Địa chỉ</label>
+                                <input required="<%= true %>" type="text" value="163 Ngô Gia Tự P.2 Q.10">
+                              <hr>
+                            </div>
+                          </fieldset>
+                        </li>
+                        <li>
+                            <fieldset class="material">
+                              <div>
+                                  <label>Thành phố</label>
+                                  <input required="<%= true %>" type="text" value="HCM">
+                                <hr>
+                              </div>
+                            </fieldset>
+                          </li>
+                        <li>
+                            <fieldset class="material">
+                              <div>
+                                  <label>Số điện thoại</label>
+                                  <input required="<%= true %>" type="text" value="090637892">
+                                <hr>
+                              </div>
+                            </fieldset>
+                          </li>
+                        <li>
+                          <fieldset class="material">
+                            <div>
+                                <label>Email</label>
+                                <input required="<%= true %>" type="text" value="email@domain.com">
+                              <hr>
+                            </div>
+                          </fieldset>
+                        </li>
+                        <li>
+                          <fieldset class="material">
+                            <div>
+                                <label>Tài khoản</label>
+                                <input required="<%= true %>" type="text" value="peterphung">
+                              <hr>
+                            </div>
+                          </fieldset>
+                        </li>
+                        <li>
+                          <fieldset class="material">
+                            <div>
+                                <label>Mật khẩu</label>
+                                <input required="<%= true %>" type="password" value="123456"> 
+                              <hr>
+                            </div>
+                          </fieldset>
+                        </li>
+                        <li class="large padding">
+                          <fieldset class="material-button center">
+                            <div>
+                              <input class="save" type="submit" value="Save">
+                            </div>
+                          </fieldset>
+                        </li>
+                      </ul>
+                    </form>
+                  
+                </main>
+            </div> 
+        </div>
+    </div>
+</nav>

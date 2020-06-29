@@ -23,9 +23,7 @@ export class ProductController {
   @ApiOperation({ summary: 'get product by Id' })
   @ApiOkResponse({ type: ProductResponse, description: 'get detail product' })
   get(@Param('id') id: string) {
-    return {
-      id: id,
-    };
+    return this.service.get(id);
   }
 
   @Resources(ResourceType.Product)
