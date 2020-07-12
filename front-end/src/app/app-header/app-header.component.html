@@ -202,11 +202,11 @@
 
               <p class="total">
                 <strong>Subtotal:</strong>
-                <span class="amount">14,670,000đ</span>
+                <span class="amount">{{item?.product?.price * item?.quantity}}</span>
               </p>
 
               <p class="buttons">
-                <a class="button wc-forward" href="cart.html">Xem giỏ hàng</a>
+                <a class="button wc-forward" routerLink="/cart">Xem giỏ hàng</a>
                 <a class="button checkout wc-forward" href="checkout.html"
                   >Thanh toán</a
                 >

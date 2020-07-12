@@ -6,6 +6,7 @@ import { ProductDetailComponent }  from './product-detail/product-detail.compone
 import { ProductListComponent }    from './product-list/product-list.component';
 
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ProductCartComponent } from './product-cart/product-cart.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { ProductRoutingModule } from './product-routing.module';
 
@@ -19,7 +20,8 @@ import { ProductRoutingModule } from './product-routing.module';
   declarations: [
     ProductListComponent,
     ProductDetailComponent,
-    ProductCategoryComponent
+    ProductCategoryComponent,
+    ProductCartComponent
   ]
 })
 export class ProductModule {}
