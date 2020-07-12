@@ -1,6 +1,7 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ClientGuard } from '../client/services/guard/client.guard';
 import { ProductCartComponent } from './product-cart/product-cart.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { ProductDetailComponent }  from './product-detail/product-detail.component';
@@ -10,7 +11,8 @@ const productRoutes: Routes = [
   { path: 'product',  component: ProductListComponent },
   { path: 'category/:id', component: ProductCategoryComponent },
   { path: 'product/:id', component: ProductDetailComponent},
-  { path: 'cart', component: ProductCartComponent},
+  { path: 'cart', component: ProductCartComponent, canActivate: [ClientGuard],
+  pathMatch: 'full'},
 ];
 
 @NgModule({
