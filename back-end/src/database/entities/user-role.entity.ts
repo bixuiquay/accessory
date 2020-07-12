@@ -8,7 +8,8 @@ export enum ResourceType {
   Order = 'Order',
   Brand = 'Brand',
   Delivery = 'Delivery',
-  Guest = 'Guest'
+  Guest = 'Guest',
+  Cart = "Cart"
 }
 
 @Entity()

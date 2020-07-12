@@ -51,7 +51,7 @@ export class ClientRegister {
   readonly password: string;
 
   @ApiProperty({ example: '123123' })
-  readonly phonenumber: string;
+  readonly phoneNumber: string;
 
   @ApiProperty({ example: 'hcm' })
   readonly city: string;

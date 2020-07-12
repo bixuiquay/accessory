@@ -21,14 +21,6 @@ export class ClientService {
     private readonly repository: Repository<Client>
   ) {}
 
-
-  // async update(id, entity: Partial<Client>): Promise<any> {
-  //   const e = await this.repository.findOne({id});
-  //   e.firstName = entity.firstName;
-  //   e.lastName = entity.lastName;
-  //   return this.repository.save(e);
-  // }
-
   async register(client: ClientRegister) {
     try {
       const hash = bcrypt.hashSync(client.password, saltRounds);
@@ -39,7 +31,7 @@ export class ClientService {
         firstName: client.firstName,
         address: client.address,
         city: client.city,
-        phone: client.phonenumber,
+        phone: client.phoneNumber,
         passwordHash: hash
       }
 
@@ -103,5 +95,4 @@ export class ClientService {
       }
     };
   }
-
 }

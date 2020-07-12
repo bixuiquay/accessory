@@ -2,9 +2,9 @@ import { Injectable } from "@angular/core";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, throwError } from "rxjs";
 import { tap } from "rxjs/operators";
-import { Authentication, ChangePasswordModel, LoginModel, UserInfo } from "./authentication.model";
+import { Authentication, ChangePasswordModel, LoginModel, UserInfo, RegisterModel, ClientModel } from "./authentication.model";
 import { HttpService, AuthService } from 'src/core/src';
-import { API_CLIENT_AUTHENTICATION, API_CLIENT_LOGIN } from './authentication.constant';
+import { API_CLIENT_AUTHENTICATION, API_CLIENT_LOGIN, API_CLIENT_REGISTER } from './authentication.constant';
 
 @Injectable()
 export class AuthenticationService {
@@ -36,6 +36,16 @@ export class AuthenticationService {
           this.authService.cart = cart;
         })
       );
+  }
+
+  /**
+   * Handle register
+   *
+   * @param  {RegisterModel} login   The register info
+   * @return {Observable<ClientModel>}
+   */
+  clientRegister(registerModel: RegisterModel): Observable<ClientModel> {
+    return this.http.post(API_CLIENT_REGISTER, registerModel);
   }
 
   /**

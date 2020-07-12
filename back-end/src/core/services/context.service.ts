@@ -8,7 +8,7 @@ export interface UserClaims {
 
 @Injectable({ scope: Scope.REQUEST })
 export class ContextService {
-  static KEY_USER = '__user';
+  static KEY_USER = 'user';
 
   /**
    * Constructor

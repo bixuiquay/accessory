@@ -6,6 +6,7 @@ import { ClientInfoComponent } from './client-info/client-info.component';
 import { ClientRoutingModule } from './client-routing.module';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { LoginFormFactory } from './login-register/login.form';
+import { RegisterFormFactory } from './login-register/register.form';
 import { ClientGuard } from './services/guard/client.guard';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ClientGuard } from './services/guard/client.guard';
   ],
   providers: [
     ClientGuard,
-    LoginFormFactory
+    LoginFormFactory,
+    RegisterFormFactory
   ]
 })
 export class ClientModule {}

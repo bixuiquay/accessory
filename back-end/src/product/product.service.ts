@@ -101,7 +101,7 @@ export class ProductService {
     return {
       ...entity,
       image: `${imageHost}/${entity.image}`,
-      listImage: entity.listImage.map(x => `${imageHost}/${x}`)
+      listImage: entity.listImage.map(x => `${imageHost}/${x}`),
     };
   }
 

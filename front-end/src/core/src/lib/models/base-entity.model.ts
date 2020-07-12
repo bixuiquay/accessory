@@ -3,13 +3,13 @@ export interface BaseEntity {
   createdBy?: any;
   createdAt: Date;
   updatedBy?: any;
-  updatedAt: Date;
+  updatedAt?: Date;
 }
 
 export interface BaseEntityV1 {
-  id: number;
+  id?: number;
   createdBy?: any;
-  createdAt: Date;
+  createdAt?: Date;
   updatedBy?: any;
-  updatedAt: Date;
+  updatedAt?: Date;
 }

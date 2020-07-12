@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Cart } from 'src/database/entities/cart.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, QueryFailedError } from 'typeorm';
-import { CartCreateRequest, CartUpdateRequest } from './cart.dto';
+import { CartCreateRequest, CartProductRequest } from './cart.dto';
 import { constants } from 'buffer';
 import { Client } from 'src/database/entities/client.entity';
 import { ContextService } from 'src/core/services';
@@ -14,6 +14,8 @@ export class CartService {
   constructor(
     @InjectRepository(Cart)
     private readonly repository: Repository<Cart>,
+    @InjectRepository(Product)
+    private readonly productRepository: Repository<Product>,
     @InjectRepository(CartProduct)
     private readonly cartProductRepository: Repository<CartProduct>,
     private readonly contextService: ContextService,
@@ -35,35 +37,84 @@ export class CartService {
       }
       return this.repository.save(entity);
     }
+
+    const exitedCart = exitedData[0];
+    const cartProductQueryBuilder = this.cartProductRepository.createQueryBuilder('cartProduct');
+    cartProductQueryBuilder.leftJoinAndSelect('cartProduct.product', 'cartProduct.productId');
+    cartProductQueryBuilder.leftJoinAndSelect('cartProduct.cart', 'cartProduct.cartId');
+    cartProductQueryBuilder.where('cartProduct.cart.id =:cartId', {cartId: exitedCart.id});
+    let cartProducts = await cartProductQueryBuilder.getMany();
+    cartProducts = cartProducts.map(x => {
+      const imageHost = process.env.IMAGE_HOST;
+      x.product = {
+        ...x.product,
+        image: `${imageHost}/${x.product.image}`,
+        listImage: x.product.listImage.map(x => `${imageHost}/${x}`)
+      };
+
+      return x;
+    })
     
-    return exitedData[0];
+    return {
+      ...exitedCart,
+      cartProducts,
+    }
   }
 
-  async update(id: number, update: CartUpdateRequest): Promise<any> {
-    const {sub, username } = this.contextService.user;
-    const queryBuilder = this.repository.createQueryBuilder('cart');
-    queryBuilder.where('cart.client.id =:clientId', {clientId: sub});
-    queryBuilder.andWhere('cart.id =:id', {id: id});
+  async update(id: number, update: CartProductRequest): Promise<any> {
     //to do search cart is not ordered queryBuilder.andWhere('cart.ordered = false');
 
-    const exitedData = await queryBuilder.getMany();
-    if (exitedData && !exitedData.length) {
+    const cart = await this.repository.findOne(id);
+    if (!cart) {
       throw new NotFoundException();
     }
-    const cart = exitedData[0];
-    
-    const saveCartProduct = {
-      cart: new Cart({id}),
-      product: new Product({id: update.productId}),
-      quantity: update.quantity
-    };
-    return await this.cartProductRepository.save(saveCartProduct);
+
+    const productInfo = await this.productRepository.findOne(update.productId);
+    if (!productInfo) {
+      throw new NotFoundException();
+    }
+
+    let updateData = await this.cartProductRepository
+    .findOne({product: new Product({id: update.productId}), cart: new Cart({id})});
+
+    if (!updateData) {
+      updateData = {
+        ...updateData,
+        cart: new Cart({id}),
+        product: new Product({id: update.productId}),
+        quantity: update.quantity
+      }
+    }
+
+    updateData.quantity = update.quantity;
+    return await this.cartProductRepository.save(updateData);
   }
 
-  // delete(id: number): Promise<any>{
-  //   return this.repository.delete(
-  //     {id}
-  //   );
-  // }
+  async delete(id, productId) {
+    return await this.cartProductRepository.delete({cart: new Cart({id}), product: new Product({id: productId})});
+  }
+
+  async get(id: number): Promise<any>{
+    const cartProductQueryBuilder = this.cartProductRepository.createQueryBuilder('cartProduct');
+    cartProductQueryBuilder.leftJoinAndSelect('cartProduct.product', 'cartProduct.productId');
+    cartProductQueryBuilder.leftJoinAndSelect('cartProduct.cart', 'cartProduct.cartId');
+    cartProductQueryBuilder.where('cartProduct.cart.id =:cartId', {cartId: id});
+    let cartProducts = await cartProductQueryBuilder.getMany();
+    cartProducts = cartProducts.map(x => {
+      const imageHost = process.env.IMAGE_HOST;
+      x.product = {
+        ...x.product,
+        image: `${imageHost}/${x.product.image}`,
+        listImage: x.product.listImage.map(x => `${imageHost}/${x}`),
+      };
+
+      return {...x, productId: x.product.id};
+    })
+
+    return {
+      id,
+      cartProducts,
+    }
+  }
 
 }

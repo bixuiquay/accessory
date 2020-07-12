@@ -3,7 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
+import { AuthenticationFacade } from 'src/+state/authentication';
+import { CartProduct } from 'src/+state/cart-product/cart-product..model';
+import { CartProductFacade } from 'src/+state/cart-product/cart-product.facade';
 import { Product, ProductFacade } from 'src/+state/product';
+import { AuthService } from 'src/core/src';
 
 @Component({
   selector: 'app-product-list',
@@ -15,8 +19,11 @@ export class ProductListComponent implements OnInit {
   featuredProducts: Product[];
   wishlistProducts: Product[];
   saleProducts: Product[];
+  exitedProducts = [];
   constructor(
     private productFacade: ProductFacade,
+    private authService: AuthService,
+    private cartProductFacade: CartProductFacade,
     private route: ActivatedRoute
   ) {}
 
@@ -53,6 +60,29 @@ export class ProductListComponent implements OnInit {
       case 3:
       case 5:
         return 'product last';
+    }
+  }
+
+  formatMoney(price) {
+    console.log(new Intl.NumberFormat('vn-VN', { maximumSignificantDigits: 3 }).format(price));
+    return new Intl.NumberFormat('vn-VN', { maximumSignificantDigits: 3 }).format(price)
+  }
+
+  addToCart(product: Product) {
+    const data = this.cartProductFacade.getExitedProduct(product.id);
+    this.exitedProducts.push(data);
+    if (data) {
+        const q = data.quantity +1;
+
+        const updateEntity = {...data, quantity: q }
+        this.cartProductFacade.updateToCart(updateEntity).subscribe();
+    } else {
+      const cartProduct: CartProduct = {
+        product,
+        quantity: 1,
+
+      }
+      this.cartProductFacade.addToCart(cartProduct).subscribe();
     }
   }
 }

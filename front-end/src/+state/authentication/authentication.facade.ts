@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { tap } from "rxjs/operators";
-import { Authentication, ChangePasswordModel, LoginModel, UserInfo } from "./authentication.model";
+import { Authentication, ChangePasswordModel, LoginModel, UserInfo, RegisterModel, ClientModel } from "./authentication.model";
 import { AuthenticationQuery } from "./authentication.query";
 import { AuthenticationService } from "./authentication.service";
 import { AuthenticationStore } from "./authentication.store";
+import { sum, sumBy } from 'lodash-es';
+import { Product } from '../product';
 
 @Injectable()
 export class AuthenticationFacade {
@@ -44,6 +46,17 @@ export class AuthenticationFacade {
     return this.service.clientLogin(model).pipe(
       tap(() => this.store.setLoading(false))
     );
+  }
+
+  /**
+   * register
+   *
+   * @param  {RegisterModel} model   The login model
+   * @return {Observable<ClientModel>}
+   */
+  register(model: RegisterModel): Observable<ClientModel> {
+
+    return this.service.clientRegister(model);
   }
 
   /**

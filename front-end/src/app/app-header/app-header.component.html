@@ -174,43 +174,27 @@
       <li class="nav-item dropdown">
         <a href="cart.html" class="nav-link" data-toggle="dropdown">
           <i class="ec ec-shopping-bag"></i>
-          <span class="cart-items-count count">3</span>
+          <span class="cart-items-count count">{{ (cart$ | async)?.length }}</span>
           <span class="cart-items-total-price total-price"
-            ><span class="amount">14,670,000đ</span></span
+            ><span class="amount">{{cart?.total}}</span></span
           >
         </a>
         <ul class="dropdown-menu dropdown-menu-mini-cart">
           <li>
             <div class="widget_shopping_cart_content">
-              <ul class="cart_list product_list_widget">
-                <li class="mini_cart_item">
-                  <a title="Remove this item" class="remove" href="#">×</a>
-                  <a href="single-product.html">
+              <ul *ngIf="cart$" class="cart_list product_list_widget">
+                <li *ngFor="let item of cart$ | async as list" class="mini_cart_item">
+                  <a title="Remove this item" class="remove" (click)="removeItem(item)">×</a>
+                  <a [routerLink]="['/product', item?.product?.id]">
                     <img
                       class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
-                      src="assets/images/ram/4.PNG"
+                      [src]="item.product.image"
                       alt=""
-                    />(16GB DDR4 2x8G 3000) Patriot Viper RGB White CL15;
+                    />{{item.product.name}}
                   </a>
 
                   <span class="quantity"
-                    >2 × <span class="amount">2,690,000đ</span></span
-                  >
-                </li>
-
-                <li class="mini_cart_item">
-                  <a title="Remove this item" class="remove" href="#">×</a>
-                  <a href="single-product.html">
-                    <img
-                      class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
-                      src="assets/images/psu/3.PNG"
-                      alt=""
-                    />( 1200W Platinum ) Nguồn ASUS Rog Thor 1200P 80 PLUS®
-                    Platinum;
-                  </a>
-
-                  <span class="quantity"
-                    >1 × <span class="amount">9,290,000đ</span></span
+                    >{{item.quantity}} × <span class="amount">{{item.product.price}} vnd</span></span
                   >
                 </li>
               </ul>

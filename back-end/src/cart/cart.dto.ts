@@ -13,7 +13,7 @@ export class CartResponse {
   id: string;
 }
 
-export class CartUpdateRequest {
+export class CartProductRequest {
   @Allow()
   @ApiProperty({ example: '1d7bc496-5865-4cfa-8f54-54fd4cd233d9' })
   @IsNotEmpty()
