@@ -4,6 +4,7 @@ import { REQUEST } from '@nestjs/core';
 export interface UserClaims {
   username: string;
   sub: string;
+  userId: string;
 }
 
 @Injectable({ scope: Scope.REQUEST })

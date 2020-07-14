@@ -87,11 +87,12 @@ export class ClientService {
       access_token: this.jwtService.sign(payload),
       cart,
       user: {
+        email: userValid.email,
         username: userValid.username,
         phone: userValid.phone,
         firstName: userValid.firstName,
         lastName: userValid.lastName,
-        address: userValid.address
+        address: userValid.address,
       }
     };
   }

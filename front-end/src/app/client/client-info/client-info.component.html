@@ -5,7 +5,7 @@
           <li class="nav-item" style="float: none;">
             <a class="nav-link active" href="#tab-products-1" data-toggle="tab" aria-expanded="true">Đơn hàng </a>
           </li>
-   
+
           <li class="nav-item">
             <a class="nav-link" href="#tab-products-2" data-toggle="tab" aria-expanded="false">Thông tin cá nhân</a>
           </li>
@@ -31,44 +31,18 @@
                                         <tr>
                                             <th>Mã đơn hàng</th>
                                             <th>Ngày mua</th>
-                                            <th>Sản phẩm</th>
                                             <th>Tổng tiền</th>
                                             <th>Trạng thái đơn hàng</th>
                                             <th>Lựa chọn</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td># 26090</td>
-                                            <td>10/06/2020</td>
-                                            <td>Asus Prime H310M-E LGA1151v2</td>
-                                            <td>1,390,000đ</td>
-                                            <td><label class="label label-success">Đang giao</label></td>
+                                        <tr *ngFor="let item of invoices$ | async as list">
+                                            <td># {{item.id}}</td>
+                                            <td>{{item.createdAt}}</td>
+                                            <td>{{item.payment}}</td>
+                                            <td><label class="label label-success">{{item.statusShip}}</label></td>
                                             <td> <a href="#" class="btn btn-xs btn-warning">View</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td># 2501</td>
-                                            <td>10/05/2020 </td>
-                                            <td>Tản nhiệt nước AIO ROG Strix LC 360 RGB White Edition</td>
-                                            <td>7,600,000</td>
-                                            <td><label class="label label-success">Đã giao</label></td>
-                                            <td> <a href="#" class="btn btn-xs btn-warning">View</a> </td>
-                                        </tr>
-            
-      
-                                        <tr>
-                                            <td># 1808</td>
-                                            <td>11/05/2020</td>
-                                            <td>
-                                                ROG Strix GeForce® RTX 2080 Ti OC White Gaming 11GB GDDR6
-                                            </td>
-                                            <td>
-                                                43,900,000đ
-                                            </td>
-                                            <td>
-                                                <label class="label label-info">Trả hàng</label></td>
-                                    
-                                             <td> <a href="#" class="btn btn-xs btn-danger">View</a> </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -90,7 +64,7 @@
                           <fieldset class="material">
                             <div>
                                 <label>Họ</label>
-                                <input required="<%= true %>" type="text" value="Phùng">
+                                <input required="<%= true %>" type="text" [value]="userInfo.firstName">
                               <hr>
                             </div>
                           </fieldset>
@@ -99,7 +73,7 @@
                             <fieldset class="material">
                               <div>
                                 <label>Tên</label>
-                                <input required="<%= true %>" type="text" value="Quang">
+                                <input required="<%= true %>" type="text" [value]="userInfo.username">
                                 <hr>
                               </div>
                             </fieldset>
@@ -108,7 +82,7 @@
                           <fieldset class="material">
                             <div>
                                 <label>Địa chỉ</label>
-                                <input required="<%= true %>" type="text" value="163 Ngô Gia Tự P.2 Q.10">
+                                <input required="<%= true %>" type="text" [value]="userInfo.address">
                               <hr>
                             </div>
                           </fieldset>
@@ -117,7 +91,7 @@
                             <fieldset class="material">
                               <div>
                                   <label>Thành phố</label>
-                                  <input required="<%= true %>" type="text" value="HCM">
+                                  <input required="<%= true %>" type="text" [value]="userInfo.city">
                                 <hr>
                               </div>
                             </fieldset>
@@ -126,7 +100,7 @@
                             <fieldset class="material">
                               <div>
                                   <label>Số điện thoại</label>
-                                  <input required="<%= true %>" type="text" value="090637892">
+                                  <input required="<%= true %>" type="text" [value]="userInfo.phone">
                                 <hr>
                               </div>
                             </fieldset>
@@ -135,25 +109,7 @@
                           <fieldset class="material">
                             <div>
                                 <label>Email</label>
-                                <input required="<%= true %>" type="text" value="email@domain.com">
-                              <hr>
-                            </div>
-                          </fieldset>
-                        </li>
-                        <li>
-                          <fieldset class="material">
-                            <div>
-                                <label>Tài khoản</label>
-                                <input required="<%= true %>" type="text" value="peterphung">
-                              <hr>
-                            </div>
-                          </fieldset>
-                        </li>
-                        <li>
-                          <fieldset class="material">
-                            <div>
-                                <label>Mật khẩu</label>
-                                <input required="<%= true %>" type="password" value="123456"> 
+                                <input required="<%= true %>" type="text" [value]="userInfo.email">
                               <hr>
                             </div>
                           </fieldset>

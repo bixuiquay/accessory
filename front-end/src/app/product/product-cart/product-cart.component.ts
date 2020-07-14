@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { CartProduct } from 'src/+state/cart-product/cart-product..model';
 import { CartProductFacade } from 'src/+state/cart-product/cart-product.facade';
 
 @Component({
@@ -20,6 +21,19 @@ export class ProductCartComponent implements OnInit {
   ngOnInit() {
   }
 
-  getClass(i) {
+  plusProductCart(cartProduct: CartProduct) {
+    const entity = {
+      ...cartProduct,
+      quantity: cartProduct.quantity + 1
+    };
+    this.cartProductFacade.updateToCart(entity).subscribe();
+  }
+
+  subtractProductCart(cartProduct: CartProduct) {
+    const entity = {
+      ...cartProduct,
+      quantity: cartProduct.quantity - 1
+    };
+    this.cartProductFacade.updateToCart(entity).subscribe();
   }
 }
