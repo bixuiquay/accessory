@@ -50,4 +50,12 @@ export class CartProductService {
       })
     );
   }
+
+  clearCartProduct(cartId): Observable<CartProduct> {
+    return this.http.put(`${API_CART}/${cartId}/clear`, {}).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
 }

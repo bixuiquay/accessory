@@ -16,6 +16,7 @@ export interface FilterProductOptions extends PaginationOptions {
   childCategoryId?: number;
   isFeatured?: boolean;
   isFlashSale?: boolean;
+  isLastMinute?: boolean;
   isWishlist?: boolean;
   sortBy?: string;
   sortDir?: 'asc' | 'desc';

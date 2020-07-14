@@ -94,6 +94,22 @@ export class CartService {
     return await this.cartProductRepository.delete({cart: new Cart({id}), product: new Product({id: productId})});
   }
 
+  async clearCart(id){
+    const cartProductQueryBuilder = this.cartProductRepository.createQueryBuilder('cartProduct');
+    cartProductQueryBuilder.leftJoinAndSelect('cartProduct.product', 'cartProduct.productId');
+    cartProductQueryBuilder.leftJoinAndSelect('cartProduct.cart', 'cartProduct.cartId');
+    cartProductQueryBuilder.where('cartProduct.cart.id =:cartId', {cartId: id});
+    let cartProducts = await cartProductQueryBuilder.getMany();
+    for(const item of cartProducts) {
+      await this.cartProductRepository.delete(item.id);
+    }
+
+    // Get 
+    return  {
+      sucess: true
+    };
+  }
+
   async get(id: number): Promise<any>{
     const cartProductQueryBuilder = this.cartProductRepository.createQueryBuilder('cartProduct');
     cartProductQueryBuilder.leftJoinAndSelect('cartProduct.product', 'cartProduct.productId');

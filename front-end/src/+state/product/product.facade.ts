@@ -31,7 +31,9 @@ export class ProductFacade {
     this.store.setLoading(true);
 
     return this.service.getAll(filters).pipe(
-      tap((data: Pagination<Product>) =>  this.store.set(data.items)),
+      tap((data: Pagination<Product>) => { 
+        this.store.set(data.items)
+      }),
       tap(() => this.store.setLoading(false))
     );
   }

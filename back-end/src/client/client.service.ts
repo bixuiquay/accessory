@@ -2,24 +2,47 @@ import { Injectable, ForbiddenException, BadRequestException } from '@nestjs/com
 import { Client } from 'src/database/entities/client.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ClientCreateRequest , ClientRegister, ClientLogin} from './client.dto';
+import { ClientCreateRequest , ClientRegister, ClientLogin, ClientProfileRequest} from './client.dto';
 import { constants } from 'buffer';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { CartService } from 'src/cart/cart.service';
+import { ContextService } from 'src/core/services';
 const saltRounds = 10;
 
 @Injectable()
 export class ClientService {
-  getAll(): any {
-    throw new Error("Method not implemented.");
-  }
   constructor(
     private readonly cartService: CartService,
     private readonly jwtService: JwtService,
     @InjectRepository(Client)
-    private readonly repository: Repository<Client>
+    private readonly repository: Repository<Client>,
+    private readonly context: ContextService
   ) {}
+
+  async getProfile() {
+    const { userId } = this.context.user;
+    const entity =  await this.repository.findOne({id: userId});
+    delete entity.passwordHash;
+    return entity;
+  }
+
+  async updateProfile(clientProfile: ClientProfileRequest) {
+    const { userId } = this.context.user;
+    const entity =  await this.repository.findOne({id: userId});
+    delete entity.passwordHash;
+    const updateEntity = {...entity, ...clientProfile}
+    // const updateEntity: Client = {
+    //   username: clientProfile.username,
+    //   passwordHash: entity.passwordHash,
+    //   email: entity.email,
+      
+    // }
+    
+
+    return await this.repository.save(updateEntity);
+  }
+
 
   async register(client: ClientRegister) {
     try {

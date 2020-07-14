@@ -82,6 +82,27 @@ export class CartProductFacade {
     );
   }
 
+   /**
+   * Update product to cart
+   *
+   */
+  clearCart(): Observable<CartProduct> {
+    if (!this.authService.cart) {
+      return ;
+    }
+
+    this.store.setLoading(true);
+    const cartId = this.authService.cart.id;
+
+    return this.service.clearCartProduct(cartId).pipe(
+      tap((data: CartProduct) => {
+        console.log
+        this.store.set([])
+      }),
+      tap(() => this.store.setLoading(false))
+    );
+  }
+
   getExitedProduct (productId: string) {
     const e = this.query.getEntity(productId);
     if (!e) {

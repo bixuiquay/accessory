@@ -242,7 +242,7 @@
                                 <div class="tab-pane active" id="tab-products-2" role="tabpanel" aria-expanded="true">
                                     <div class="woocommerce columns-3">
                                         <ul class="products columns-3">
-                                            <li *ngFor="let product of wishlistProducts; let i = index" [class]="getProductClass(i)">
+                                            <li *ngFor="let product of lastMinuteProducts; let i = index" [class]="getProductClass(i)">
                                                 <div class="product-outer" style="height: 309px;">
                                                     <div class="product-inner">
                                                         <span class="loop-product-categories"><a href="product-category.html" rel="tag">Mainboard</a></span>
@@ -282,7 +282,7 @@
                                     <div class="woocommerce columns-3">
 
                                         <ul class="products columns-3">
-                                            <li *ngFor="let product of saleProducts; let i = index" [class]="getProductClass(i)">
+                                            <li *ngFor="let product of wishlistProducts; let i = index" [class]="getProductClass(i)">
                                                 <div class="product-outer" style="height: 309px;">
                                                     <div class="product-inner">
                                                         <span class="loop-product-categories"><a href="product-category.html" rel="tag">Mainboard</a></span>

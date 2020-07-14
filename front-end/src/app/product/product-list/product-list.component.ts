@@ -18,8 +18,7 @@ export class ProductListComponent implements OnInit {
 
   featuredProducts: Product[];
   wishlistProducts: Product[];
-  saleProducts: Product[];
-  exitedProducts = [];
+  lastMinuteProducts: Product[];
   constructor(
     private productFacade: ProductFacade,
     private authService: AuthService,
@@ -40,12 +39,12 @@ export class ProductListComponent implements OnInit {
       isWishlist: true
     }), this.productFacade.getAll({
       ...filter,
-      isFlashSale: true
+      isLastMinute: true
     })
-    ]).subscribe(([featuredProducts, wishlistProducts, saleProducts]) => {
+    ]).subscribe(([featuredProducts, wishlistProducts, lastMinuteProducts]) => {
       this.featuredProducts = featuredProducts.items;
       this.wishlistProducts = wishlistProducts.items;
-      this.saleProducts = saleProducts.items;
+      this.lastMinuteProducts = lastMinuteProducts.items;
     })
   }
 
@@ -70,7 +69,6 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: Product) {
     const data = this.cartProductFacade.getExitedProduct(product.id);
-    this.exitedProducts.push(data);
     if (data) {
         const q = data.quantity +1;
 

@@ -48,6 +48,17 @@ export class AuthenticationService {
     return this.http.post(API_CLIENT_REGISTER, registerModel);
   }
 
+    /**
+   * client profile
+   *
+   * @param  {RegisterModel} login   The register info
+   * @return {Observable<ClientModel>}
+   */
+  getClientProfile(): Observable<ClientModel> {
+    return this.http.get(`${API_CLIENT_AUTHENTICATION}/profile`);
+  }
+
+
   /**
    * Handle logout
    *

@@ -66,6 +66,7 @@ export class ProductCheckoutComponent implements OnInit {
       products: this.products
     }).subscribe(data => {
       document.getElementById("btn-modal").click();
+      this.cartProductFacade.clearCart().subscribe();
       this.router.navigate(['user/profile']);
     })
   }

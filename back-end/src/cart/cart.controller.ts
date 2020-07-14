@@ -13,6 +13,14 @@ export class CartController {
     private readonly service: CartService
   ){}
 
+  @Put(':id/clear')
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'delete a cart product' })
+  @ApiOkResponse({ type: CartResponse, description: 'delete a cart product' })
+  async clearCart(@Param('id')id: number): Promise<any>{
+    return this.service.clearCart(id);
+  }
+
   @Put(':id/product')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'update a cart product' })

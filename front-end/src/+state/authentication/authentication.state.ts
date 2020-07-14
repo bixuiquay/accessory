@@ -5,6 +5,7 @@ import { AuthenticationQuery } from './authentication.query';
 import { AuthenticationService } from './authentication.service';
 import { AuthenticationStore } from './authentication.store';
 import { AuthService, ApiUrlToken, environment, HttpService, throwIfAlreadyLoaded } from 'src/core/src';
+import { ClientStore } from './client.store';
 
 export function jwtTokenGetter(): string {
   return AuthService.tokenGetter();
@@ -32,7 +33,8 @@ export function jwtTokenGetter(): string {
     AuthenticationFacade,
     AuthenticationQuery,
     AuthenticationService,
-    AuthenticationStore
+    AuthenticationStore,
+    ClientStore
   ]
 })
 export class AuthenticationStateModule {
@@ -48,7 +50,8 @@ export class AuthenticationStateModule {
         AuthenticationFacade,
         AuthenticationQuery,
         AuthenticationService,
-        AuthenticationStore
+        AuthenticationStore,
+        ClientStore
       ]
     };
   }
