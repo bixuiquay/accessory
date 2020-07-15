@@ -147,8 +147,6 @@ export class HttpService {
    */
   private buildUrl(endpoint: string, options: any = {}): string {
     const { noCache } = options;
-    console.log('endpoint: ', endpoint);
-    console.log('domain: ', this.domain);
     const url = endpoint.includes('http') ? endpoint : `${this.domainWithLang}${endpoint}`;
 
     return noCache ? `${url}?t=${new Date().getTime()}` : url;

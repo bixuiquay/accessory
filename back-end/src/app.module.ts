@@ -10,6 +10,7 @@ import { BrandModule } from './brand/branch.module';
 import { ImageModule } from './image/image.module';
 import { ClientModule } from './client/client.module';
 import { CartModule } from './cart/cart.module';
+import { InvoiceModule } from './invoice/invoice.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { CartModule } from './cart/cart.module';
     ChildCategoryModule,
     BrandModule,
     ImageModule,
+    InvoiceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -10,12 +10,13 @@ import { CartService } from 'src/cart/cart.service';
 import { Cart } from 'src/database/entities/cart.entity';
 import { CartProduct } from 'src/database/entities/cart-product.entity';
 import { ContextService } from 'src/core/services';
+import { Product } from 'src/database/entities/product.entity';
 
 @Module({
   controllers: [ClientController],
   providers: [ClientService, CartService, ContextService],
   imports: [
-    TypeOrmModule.forFeature([Client, Cart, CartProduct]),
+    TypeOrmModule.forFeature([Client, Cart, CartProduct, Product]),
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '7h' },

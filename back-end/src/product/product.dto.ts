@@ -89,6 +89,10 @@ export class ProductPaginatedRequest extends BasePaginatedRequest<Product>  {
   @Allow()
   @ApiProperty({ description: 'search by isFlashSale', required: false, example: false })
   isFlashSale: boolean;
+
+  @Allow()
+  @ApiProperty({ description: 'search by isFlashSale', required: false, example: false })
+  isLastMinute: boolean;
 }
 
 export class ProductResponse extends AuditableResponse {

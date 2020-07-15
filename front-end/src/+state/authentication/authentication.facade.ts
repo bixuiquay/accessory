@@ -1,10 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { tap } from "rxjs/operators";
-import { Authentication, ChangePasswordModel, LoginModel, UserInfo } from "./authentication.model";
+import { Authentication, ChangePasswordModel, LoginModel, UserInfo, RegisterModel, ClientModel } from "./authentication.model";
 import { AuthenticationQuery } from "./authentication.query";
 import { AuthenticationService } from "./authentication.service";
 import { AuthenticationStore } from "./authentication.store";
+import { sum, sumBy } from 'lodash-es';
+import { Product } from '../product';
+import { ClientStore } from './client.store';
 
 @Injectable()
 export class AuthenticationFacade {
@@ -19,6 +22,7 @@ export class AuthenticationFacade {
    */
   constructor(
     protected store: AuthenticationStore,
+    protected clientStore: ClientStore,
     protected query: AuthenticationQuery,
     protected service: AuthenticationService
   ) {}
@@ -47,6 +51,17 @@ export class AuthenticationFacade {
   }
 
   /**
+   * register
+   *
+   * @param  {RegisterModel} model   The login model
+   * @return {Observable<ClientModel>}
+   */
+  register(model: RegisterModel): Observable<ClientModel> {
+
+    return this.service.clientRegister(model);
+  }
+
+  /**
    * Logout
    *
    * @return {Observable<string>}
@@ -56,6 +71,22 @@ export class AuthenticationFacade {
 
     return this.service.logout().pipe(
       tap(() => this.store.setLoading(false))
+    );
+  }
+
+  /**
+   * Logout
+   *
+   * @return {Observable<any>}
+   */
+  getClientProfile(): Observable<any> {
+    this.clientStore.setLoading(true);
+
+    return this.service.getClientProfile().pipe(
+      tap((data) => {
+        this.clientStore.set(data);
+        this.clientStore.setLoading(false)
+      })
     );
   }
 

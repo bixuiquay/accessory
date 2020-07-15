@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { ClientGuard } from './client/services/guard/client.guard';
+import { ProductCartComponent } from './product/product-cart/product-cart.component';
 
 // import { ComposeMessageComponent } from "./compose-message/compose-message.component";
 // import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
@@ -8,11 +10,11 @@ import { RouterModule, Routes } from "@angular/router";
 // import { SelectivePreloadingStrategyService } from "./selective-preloading-strategy.service";
 
 const appRoutes: Routes = [
-  { path: '',   redirectTo: '/product', pathMatch: 'full' },
+  { path: '', loadChildren: () => import('./product/product.module').then(m => m.ProductModule), },
   {
     path: 'user',
     loadChildren: () => import('./client/client.module').then(m => m.ClientModule),
-  },
+  }
   // { path: '**', component: PageNotFoundComponent }
 ];
 

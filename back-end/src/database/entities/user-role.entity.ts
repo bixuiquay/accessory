@@ -4,11 +4,13 @@ import { BaseEntity } from './base.entity';
 export enum ResourceType {
   Product = 'Product',
   Category = 'Category',
+  Invoice = 'Invoice',
   ChildCategory = 'ChildCategory',
   Order = 'Order',
   Brand = 'Brand',
   Delivery = 'Delivery',
-  Guest = 'Guest'
+  Guest = 'Guest',
+  Cart = "Cart"
 }
 
 @Entity()

@@ -1,5 +1,9 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AuthenticationFacade } from 'src/+state/authentication';
+import { CartProduct } from 'src/+state/cart-product/cart-product..model';
+import { CartProductFacade } from 'src/+state/cart-product/cart-product.facade';
 import { Category, CategoryFacade } from 'src/+state/category';
+import { AuthService } from 'src/core/src';
 declare var $:JQueryStatic;
 @Component({
   selector: 'app-header',
@@ -8,13 +12,17 @@ declare var $:JQueryStatic;
 })
 export class AppHeaderComponent implements OnInit, AfterContentInit {
   categories: Category[];
+  // cart$ = this.cartProductFacade.cartProducts$;
 
   constructor(
-    private categoryFacade: CategoryFacade
+    private categoryFacade: CategoryFacade,
+    // private cartProductFacade: CartProductFacade,
+    private authService: AuthService
 
   ) { }
 
   ngAfterContentInit(): void {
+    //check local storage
   }
 
   ngOnInit() {
@@ -39,6 +47,11 @@ export class AppHeaderComponent implements OnInit, AfterContentInit {
         document.body.appendChild(node);
       });
     });
+
+    // this.cartProductFacade.getCartInfo().subscribe();
   }
 
+  // removeItem(p: CartProduct) {
+  //   this.cartProductFacade.deleteCartProduct(p.product.id).subscribe();
+  // }
 }

@@ -21,7 +21,7 @@ export const createInitialState = (): AuthenticationState => {
 }
 
 @Injectable()
-@StoreConfig({ name: 'RankingRule', idKey: 'id' })
+@StoreConfig({ name: 'auth', idKey: 'id' })
 export class AuthenticationStore extends EntityStore<AuthenticationState, Authentication> {
   /**
    * Constructor

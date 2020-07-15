@@ -64,6 +64,10 @@ export class ProductService {
       queryBuilder.andWhere('product.isFlashSale = :isFlashSale', { isFlashSale: true });
     }
 
+    if (filter.isLastMinute) {
+      queryBuilder.andWhere('product.isLastMinute = :isLastMinute', { isLastMinute: true });
+    }
+
     if (filter.isWishlist) {
       queryBuilder.andWhere('product.isWishlist = :isWishlist', {isWishlist: true});
     }
@@ -101,7 +105,7 @@ export class ProductService {
     return {
       ...entity,
       image: `${imageHost}/${entity.image}`,
-      listImage: entity.listImage.map(x => `${imageHost}/${x}`)
+      listImage: entity.listImage.map(x => `${imageHost}/${x}`),
     };
   }
 

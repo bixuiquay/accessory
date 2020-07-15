@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { CartProductFacade } from 'src/+state/cart-product/cart-product.facade';
 import { Category, CategoryFacade } from 'src/+state/category';
 import { ChildCategory, ChildCategoryFacade } from 'src/+state/child-category';
 import { Product, ProductFacade } from 'src/+state/product';
 import { Pagination } from 'src/core/src';
+import { CartProduct } from 'src/+state/cart-product/cart-product..model';
+
 
 // import { ProductService }  from '../product.service';
 
@@ -22,6 +25,7 @@ export class ProductCategoryComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productFacade: ProductFacade,
+    private cartProductFacade: CartProductFacade,
     private childCategoryFacade: ChildCategoryFacade
   ) {}
 
@@ -38,6 +42,23 @@ export class ProductCategoryComponent implements OnInit {
 
       // this.childCategoryFacade.get(Number(params.get('id')))
     });
+  }
+
+  addToCart(product: Product) {
+    const data = this.cartProductFacade.getExitedProduct(product.id);
+    if (data) {
+        const q = data.quantity +1;
+
+        const updateEntity = {...data, quantity: q }
+        this.cartProductFacade.updateToCart(updateEntity).subscribe();
+    } else {
+      const cartProduct: CartProduct = {
+        product,
+        quantity: 1,
+
+      }
+      this.cartProductFacade.addToCart(cartProduct).subscribe();
+    }
   }
 
 }

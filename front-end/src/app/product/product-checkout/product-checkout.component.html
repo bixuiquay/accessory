@@ -1,0 +1,327 @@
+<div id="content" class="site-content" tabindex="-1">
+  <div class="container">
+    <nav class="woocommerce-breadcrumb">
+      <a href="home.html">Trang chủ</a
+      ><span class="delimiter"><i class="fa fa-angle-right"></i></span>Thanh
+      toán
+    </nav>
+
+    <div id="primary" class="content-area">
+      <main id="main" class="site-main">
+        <article class="page type-page status-publish hentry">
+          <header class="entry-header">
+            <h1 itemprop="name" class="entry-title">Thanh toán</h1>
+          </header>
+          <!-- .entry-header -->
+          <form
+          enctype="multipart/form-data"
+          class="checkout woocommerce-checkout"
+          #ngForm="ngForm" autocomplete="off" [formGroup]="checkoutForm" 
+          >
+
+            <div id="customer_details" class="col2-set">
+              <div class="col-1">
+                <div class="woocommerce-billing-fields">
+                  <h3>Hóa đơn chi tiết</h3>
+
+                  <p
+                    id="billing_first_name_field"
+                    class="form-row form-row form-row-first validate-required"
+                  >
+                    <label class="" for="billing_first_name"
+                      >Họ
+                      <abbr title="required" class="required">*</abbr></label
+                    ><input
+                      formControlName="firstName"
+                      type="text"
+                      value=""
+                      placeholder=""
+                      id="billing_first_name"
+                      name="billing_first_name"
+                      class="input-text"
+                    />
+                  </p>
+
+                  <p
+                    id="billing_last_name_field"
+                    class="form-row form-row form-row-last validate-required"
+                  >
+                    <label class="" for="billing_last_name"
+                      >Tên
+                      <abbr title="required" class="required">*</abbr></label
+                    ><input
+                      formControlName="lastName"
+                      type="text"
+                      value=""
+                      placeholder=""
+                      id="billing_last_name"
+                      name="billing_last_name"
+                      class="input-text"
+                    />
+                  </p>
+                  <div class="clear"></div>
+
+                  <p
+                    id="billing_email_field"
+                    class="form-row form-row form-row-first validate-required validate-email"
+                  >
+                    <label class="" for="billing_email"
+                      >Email<abbr title="required" class="required"
+                        >*</abbr
+                      ></label
+                    ><input
+                      formControlName="email"
+                      type="email"
+                      value=""
+                      placeholder=""
+                      id="billing_email"
+                      name="billing_email"
+                      class="input-text"
+                    />
+                  </p>
+
+                  <p
+                    id="billing_phone_field"
+                    class="form-row form-row form-row-last validate-required validate-phone"
+                  >
+                    <label class="" for="billing_phone"
+                      >Số điện thoại
+                      <abbr title="required" class="required">*</abbr></label
+                    ><input
+                      formControlName="phone"
+                      type="tel"
+                      value=""
+                      placeholder=""
+                      id="billing_phone"
+                      name="billing_phone"
+                      class="input-text"
+                    />
+                  </p>
+                  <div class="clear"></div>
+
+                  <p
+                    id="billing_address_1_field"
+                    class="form-row form-row form-row-wide address-field validate-required"
+                  >
+                    <label class="" for="billing_address_1"
+                      >Địa chỉ
+                      <abbr title="required" class="required">*</abbr></label
+                    ><input
+                      formControlName="address"
+                      type="text"
+                      value=""
+                      placeholder="Địa chỉ"
+                      id="billing_address_1"
+                      name="billing_address_1"
+                      class="input-text"
+                    />
+                  </p>
+
+                  <p
+                    id="billing_city_field"
+                    class="form-row form-row form-row-wide address-field validate-required"
+                    data-o_class="form-row form-row form-row-wide address-field validate-required"
+                  >
+                    <label class="" for="billing_city"
+                      >Thành phố
+                      <abbr title="required" class="required">*</abbr></label
+                    ><input
+                      formControlName="city"
+                      type="text"
+                      value=""
+                      placeholder=""
+                      id="billing_city"
+                      name="billing_city"
+                      class="input-text"
+                    />
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <!-- <p class="form-row form-row-wide create-account">
+                    <input
+                      type="checkbox"
+                      value="1"
+                      name="createaccount"
+                      id="createaccount"
+                      class="input-checkbox"
+                    />
+                    <label class="checkbox" for="createaccount"
+                      >Tạo tài khoản</label
+                    >
+                  </p> -->
+                </div>
+              </div>
+
+              <div class="col-2">
+                <h3>Thông tin giao hàng chi tiết</h3>
+                <div class="woocommerce-shipping-fields">
+                  <p id="order_comments_field" class="form-row form-row notes">
+                    <label class="" for="order_comments">Ghi chú khác</label
+                    ><textarea
+                      formControlName="note"
+                      cols="5"
+                      rows="2"
+                      placeholder="Ghi chú cho đơn hàng, ví dụ: Tòa nhà ở bitexco"
+                      id="order_comments"
+                      class="input-text"
+                      name="order_comments"
+                    ></textarea>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h3 id="order_review_heading">Thông tin đặt hàng</h3>
+
+            <div class="woocommerce-checkout-review-order" id="order_review">
+              <table class="shop_table woocommerce-checkout-review-order-table">
+                <thead>
+                  <tr>
+                    <th class="product-name">Sản phẩm</th>
+                    <th class="product-total">Tổng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of cart$ | async as list" class="cart_item">
+                    <td class="product-name">
+                      {{item.product.price}}
+                      <strong class="product-quantity">× {{item.quantity}}</strong>
+                    </td>
+                    <td class="product-total">
+                      <span class="amount">{{item.product.price * item.quantity}}</span>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr class="cart-subtotal">
+                    <th>Tổng sản phẩm</th>
+                    <td><span class="amount">{{productTotal}}</span></td>
+                  </tr>
+
+                  <tr class="shipping">
+                    <th>Phí giao hàng</th>
+                    <td data-title="Shipping">
+                      <span class="amount">0đ</span>
+                      <input
+                        type="hidden"
+                        class="shipping_method"
+                        value="international_delivery"
+                        id="shipping_method_0"
+                        data-index="0"
+                        name="shipping_method[0]"
+                      />
+                    </td>
+                  </tr>
+
+                  <tr class="order-total">
+                    <th>Tổng tiền</th>
+                    <td>
+                      <strong><span class="amount">{{ total }}</span></strong>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+
+              <div class="woocommerce-checkout-payment" id="payment">
+                <ul class="wc_payment_methods payment_methods methods">
+                  <!-- <li class="wc_payment_method payment_method_bacs">
+                    <input
+                      type="radio"
+                      data-order_button_text=""
+                      value="bacs"
+                      name="payment_method"
+                      class="input-radio"
+                      id="payment_method_bacs"
+                    />
+                    <label for="payment_method_bacs">Chuyển khoản</label>
+                  </li> -->
+                  <!-- <li class="wc_payment_method payment_method_cheque">
+                    <input
+                      type="radio"
+                      data-order_button_text=""
+                      value="cheque"
+                      name="payment_method"
+                      class="input-radio"
+                      id="payment_method_cheque"
+                    />
+                    <label for="payment_method_cheque"
+                      >Thanh toán bằng chi phiếu</label
+                    >
+                  </li> -->
+                  <li class="wc_payment_method payment_method_cod">
+                    <input
+                      type="radio"
+                      data-order_button_text=""
+                      checked="checked"
+                      value="cod"
+                      name="payment_method"
+                      class="input-radio"
+                      id="payment_method_cod"
+                    />
+
+                    <label for="payment_method_cod"
+                      >Thanh toán khi giao hàng</label
+                    >
+                  </li>
+                  <!-- <li class="wc_payment_method payment_method_paypal">
+                    <input
+                      type="radio"
+                      data-order_button_text="Proceed to PayPal"
+                      value="paypal"
+                      name="payment_method"
+                      class="input-radio"
+                      id="payment_method_paypal"
+                    /> -->
+
+                    <!-- <label for="payment_method_paypal"
+                      >Thanh toán PayPal
+                      <img
+                        alt="PayPal Acceptance Mark"
+                        src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" /><a
+                        title="What is PayPal?"
+                        onclick="javascript:window.open('https://www.paypal.com/us/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"
+                        class="about_paypal"
+                        href="https://www.paypal.com/us/webapps/mpp/paypal-popup"
+                      ></a
+                    ></label> -->
+                  <!-- </li> -->
+                </ul>
+                <div class="form-row place-order">
+                  <p class="form-row terms wc-terms-and-conditions">
+                    <input
+                      type="checkbox"
+                      id="terms"
+                      name="terms"
+                      class="input-checkbox"
+                    />
+                    <label class="checkbox" for="terms"
+                      >Tôi đã đọc và chấp nhận
+                      <a target="_blank" href="terms-and-conditions.html"
+                        >điều khoản</a
+                      >
+                      <span class="required">*</span></label
+                    >
+                    <input type="hidden" value="1" name="terms-field" />
+                  </p>
+
+                  <input
+                    class="button alt"
+                    (click)="submit()"
+                    type="submit"
+                    data-value="Place order"
+                    value="Đặt hàng"
+
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </article>
+      </main>
+      <!-- #main -->
+    </div>
+    <!-- #primary -->
+  </div>
+  <!-- .container -->
+</div>

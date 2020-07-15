@@ -219,12 +219,12 @@
                                                         <div class="price-add-to-cart">
                                                             <span class="price">
                                                                 <span class="electro-price" style="position: relative;">
-                                                                    <ins><span class="amount">{{product.price}}</span></ins>
+                                                                    <ins><span class="amount">{{ product.price | currency:'VND':'symbol':'3.2':'fr' }}</span></ins>
                                                                     <del style="position:absolute;left:0;top:-14px;"><span class="amount">2,299,000đ</span></del>
                                                                     <span class="amount"> </span>
                                                                 </span>
                                                             </span>
-                                                            <a rel="nofollow" class="button add_to_cart_button">Add to cart</a>
+                                                            <a rel="nofollow" class="button add_to_cart_button" (click)="addToCart(product)">Add to cart</a>
                                                         </div><!-- /.price-add-to-cart -->
 
                                                         <div class="hover-area">
@@ -242,7 +242,7 @@
                                 <div class="tab-pane active" id="tab-products-2" role="tabpanel" aria-expanded="true">
                                     <div class="woocommerce columns-3">
                                         <ul class="products columns-3">
-                                            <li *ngFor="let product of wishlistProducts; let i = index" [class]="getProductClass(i)">
+                                            <li *ngFor="let product of lastMinuteProducts; let i = index" [class]="getProductClass(i)">
                                                 <div class="product-outer" style="height: 309px;">
                                                     <div class="product-inner">
                                                         <span class="loop-product-categories"><a href="product-category.html" rel="tag">Mainboard</a></span>
@@ -256,12 +256,12 @@
                                                         <div class="price-add-to-cart">
                                                             <span class="price">
                                                                 <span class="electro-price" style="position: relative;">
-                                                                    <ins><span class="amount">{{product.price}}</span></ins>
+                                                                    <ins><span class="amount">{{ product.price | currency:'VND':'symbol':'3.2':'fr' }}</span></ins>
                                                                     <del style="position:absolute;left:0;top:-14px;"><span class="amount">2,299,000đ</span></del>
                                                                     <span class="amount"> </span>
                                                                 </span>
                                                             </span>
-                                                            <a rel="nofollow" class="button add_to_cart_button">Add to cart</a>
+                                                            <a rel="nofollow" class="button add_to_cart_button" (click)="addToCart(product)">Add to cart</a>
                                                         </div><!-- /.price-add-to-cart -->
 
                                                         <div class="hover-area">
@@ -282,7 +282,7 @@
                                     <div class="woocommerce columns-3">
 
                                         <ul class="products columns-3">
-                                            <li *ngFor="let product of saleProducts; let i = index" [class]="getProductClass(i)">
+                                            <li *ngFor="let product of wishlistProducts; let i = index" [class]="getProductClass(i)">
                                                 <div class="product-outer" style="height: 309px;">
                                                     <div class="product-inner">
                                                         <span class="loop-product-categories"><a href="product-category.html" rel="tag">Mainboard</a></span>
@@ -296,12 +296,12 @@
                                                         <div class="price-add-to-cart">
                                                             <span class="price">
                                                                 <span class="electro-price" style="position: relative;">
-                                                                    <ins><span class="amount">{{product.price}}</span></ins>
+                                                                    <ins><span class="amount">{{ product.price | currency:'VND':'symbol':'3.2':'fr' }}</span></ins>
                                                                     <del style="position:absolute;left:0;top:-14px;"><span class="amount">2,299,000đ</span></del>
                                                                     <span class="amount"> </span>
                                                                 </span>
                                                             </span>
-                                                            <a rel="nofollow" class="button add_to_cart_button">Add to cart</a>
+                                                            <a rel="nofollow" class="button add_to_cart_button" (click)="addToCart(product)">Add to cart</a>
                                                         </div><!-- /.price-add-to-cart -->
 
                                                         <div class="hover-area">

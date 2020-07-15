@@ -4,11 +4,12 @@ import { REQUEST } from '@nestjs/core';
 export interface UserClaims {
   username: string;
   sub: string;
+  userId: string;
 }
 
 @Injectable({ scope: Scope.REQUEST })
 export class ContextService {
-  static KEY_USER = '__user';
+  static KEY_USER = 'user';
 
   /**
    * Constructor

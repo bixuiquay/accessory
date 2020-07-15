@@ -1,19 +1,25 @@
-import { Column, Entity, OneToOne, JoinColumn, Unique, ManyToOne } from 'typeorm';
+import { Column, Entity, OneToOne, JoinColumn, Unique, ManyToOne, OneToMany } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import {Client} from './client.entity';
-import {Cart} from './cart.entity';
 import {User} from './user.entity';
+import { ProductInvoice } from './product-invoice.entity';
+
+export enum StatusPayment {
+  New = 'New',
+  Progress = 'Progress',
+  Completed = 'Completed'
+}
+
+export enum StatusShip {
+  New = 'New',
+  Progress = 'Progress',
+  Completed = 'Completed'
+}
 
 @Entity()
 export class Invoice extends BaseEntity{
-  @Column({
-    unique: true
-  })
-  username: string;
 
-  @Column({
-    unique: true
-  })
+  @Column()
   email: string;
 
   @Column( { nullable: true } )
@@ -26,36 +32,39 @@ export class Invoice extends BaseEntity{
   address: string;
 
   @Column()
+  note: string;
+
+  @Column()
   city: string;
 
   @Column()
-  phone: number;
+  phone: string;
 
   @Column()
-  statuspayment: string;
+  statusPayment: string;
 
   @Column()
-  statusship: string;
+  statusShip: string;
 
   @OneToOne('User', 'userId')
-  userId: User
+  user: User
 
   @ManyToOne('Client', 'clientId')
   client: Client
 
-  @OneToOne('Cart', 'cartId')
-  cartId: Cart
-
   @Column( { type: 'decimal' } )
   payment: number;
+
+  @OneToMany(type => ProductInvoice, productInvoice => productInvoice.invoice)
+  productInvoices: ProductInvoice[];
 
   /**
    * Constructor
    *
-   * @param  {Partial<User> } user    The partial info
+   * @param  {Partial<Invoice> } user    The partial info
    */
-  constructor(client: Partial<Client>) {
+  constructor(invoice: Partial<Invoice>) {
     super()
-    Object.assign(this, client || {});
+    Object.assign(this, invoice || {});
   }
 }
