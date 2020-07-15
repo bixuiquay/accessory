@@ -22,11 +22,11 @@ export class ClientResponse {
 }
 
 export class ClientLogin {
-  @ApiProperty({ example: 'admin@gmail.com' })
+  @ApiProperty({ example: 'test3@gmail.com' })
   @IsEmail()
   readonly email: string;
 
-  @ApiProperty({ example: 'p@ssw0rd' })
+  @ApiProperty({ example: '123456' })
   @IsString()
   readonly password: string;
 }

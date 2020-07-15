@@ -26,18 +26,23 @@ export class ClientService {
     delete entity.passwordHash;
     return entity;
   }
-
+  
+  // Update profile 
   async updateProfile(clientProfile: ClientProfileRequest) {
     const { userId } = this.context.user;
     const entity =  await this.repository.findOne({id: userId});
     delete entity.passwordHash;
-    const updateEntity = {...entity, ...clientProfile}
-    // const updateEntity: Client = {
-    //   username: clientProfile.username,
-    //   passwordHash: entity.passwordHash,
-    //   email: entity.email,
-      
-    // }
+    // const updateEntity = {...entity, ...clientProfile}
+    const updateEntity = {
+      username: clientProfile.username,
+      passwordHash: entity.passwordHash,
+      email: entity.email,
+      address: clientProfile.address,
+      city: clientProfile.city,
+      firstName: clientProfile.firstName,
+      lastName: clientProfile.lastName,
+      phone: clientProfile.phoneNumber 
+    }
     
 
     return await this.repository.save(updateEntity);
