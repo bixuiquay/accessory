@@ -1,6 +1,6 @@
 // TODO: Feature Componetized like CrisisCenter
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 import { AuthenticationFacade } from 'src/+state/authentication/authentication.facade';
 import { CartProductFacade } from 'src/+state/cart-product/cart-product.facade';
 import { InvoiceFacade } from 'src/+state/invoice/invoice.facade';
@@ -19,7 +19,7 @@ export class ClientInfoComponent implements OnInit {
     private cartProductFacade: CartProductFacade,
     private invoiceFacade: InvoiceFacade,
     private authService: AuthService,
-    private route: ActivatedRoute,
+    private route: Router,
     private authenticationFacade: AuthenticationFacade
     ) {}
 
@@ -31,5 +31,9 @@ export class ClientInfoComponent implements OnInit {
     this.authenticationFacade.getClientProfile().subscribe(data => {
       this.userInfo = data;
     })
+  }
+  Logout() {
+    localStorage.removeItem('token');
+    this.route.navigate(['/user/login-register']);
   }
 }

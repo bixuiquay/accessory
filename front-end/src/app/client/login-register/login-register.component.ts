@@ -22,7 +22,10 @@ export class LoginRegisterComponent implements OnInit {
     private router: Router,
     private registerFormFactory: RegisterFormFactory
   ) {}
-  ngOnInit() {}
+  
+  ngOnInit() {
+
+  }
 
   /**
    * Create a form
@@ -59,5 +62,4 @@ export class LoginRegisterComponent implements OnInit {
       console.log('data: ', data);
     })
   }
-
 }
