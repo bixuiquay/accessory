@@ -1,13 +1,14 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { CartProduct } from 'src/+state/cart-product/cart-product..model';
 import { CartProductFacade } from 'src/+state/cart-product/cart-product.facade';
 import { Category, CategoryFacade } from 'src/+state/category';
 import { ChildCategory, ChildCategoryFacade } from 'src/+state/child-category';
 import { Product, ProductFacade } from 'src/+state/product';
 import { Pagination } from 'src/core/src';
-import { CartProduct } from 'src/+state/cart-product/cart-product..model';
 
 
 // import { ProductService }  from '../product.service';
@@ -60,5 +61,6 @@ export class ProductCategoryComponent implements OnInit {
       this.cartProductFacade.addToCart(cartProduct).subscribe();
     }
   }
+
 
 }

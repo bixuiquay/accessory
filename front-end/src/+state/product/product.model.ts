@@ -7,6 +7,8 @@ export interface Product extends BaseEntity {
   quantity: number;
   image: string;
   listImage: string[];
+  priceSale: number;
+  brandId: number;
 }
 
 export interface FilterProductOptions extends PaginationOptions {

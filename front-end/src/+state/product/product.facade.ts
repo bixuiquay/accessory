@@ -47,7 +47,7 @@ export class ProductFacade {
 
     return this.service.get(id).pipe(
       tap((data: Product) => {
-        console.log('data: dkdkdkdk', data);
+        console.log('data: ', data);
         this.store.update(id, data);
       }),
       tap(() => this.store.setLoading(false))

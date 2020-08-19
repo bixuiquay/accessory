@@ -17,8 +17,8 @@ import { AuthService } from 'src/core/src';
 export class ProductListComponent implements OnInit {
 
   featuredProducts: Product[];
-  wishlistProducts: Product[];
   lastMinuteProducts: Product[];
+  innerProducts: Product[];
   constructor(
     private productFacade: ProductFacade,
     private authService: AuthService,
@@ -36,15 +36,18 @@ export class ProductListComponent implements OnInit {
       isFeatured: true
     }), this.productFacade.getAll({
       ...filter,
-      isWishlist: true
+      isFeatured: null,
+      isLastMinute: null
     }), this.productFacade.getAll({
       ...filter,
       isLastMinute: true
     })
-    ]).subscribe(([featuredProducts, wishlistProducts, lastMinuteProducts]) => {
+    ]).subscribe(([featuredProducts, innerProducts, lastMinuteProducts]) => {
       this.featuredProducts = featuredProducts.items;
-      this.wishlistProducts = wishlistProducts.items;
+      this.innerProducts = innerProducts.items;
       this.lastMinuteProducts = lastMinuteProducts.items;
+
+  console.log(this.innerProducts);
     })
   }
 

@@ -15,10 +15,8 @@
                     <header>
                         <h2 class="h1">{{products?.items[0]?.category?.name}}</h2>
                     </header>
-
                     <div class="woocommerce columns-4">
                         <ul class="product-loop-categories">
-
                             <li *ngFor="let product of products.items" class="product-category product">
                                 <a [routerLink]="['/product', product.id]" routerLinkActive="router-link-active" >
                                     <img [src]="product?.image" class="img-responsive" alt="">
@@ -27,8 +25,8 @@
                                 <div class="price-add-to-cart">
                                     <span class="price">
                                         <span class="electro-price">
-                                            <ins><span class="amount"> {{product.price}}</span></ins>
-                                            <del><span class="amount">{{product.quantity}}</span></del>
+                                            <ins><span class="amount"> {{product.priceSale}}</span></ins>
+                                            <del><span class="amount">{{product.price}}</span></del>
                                             <span class="amount"> </span>
                                         </span>
                                     </span>
@@ -36,9 +34,16 @@
                                 </div><!-- /.price-add-to-cart -->
                             </li><!-- /.item -->
                         </ul>
+                        <div>
+                            <button (click) ="firstPage()" mat-button> First</button>
+                            <button (click) ="previousPage()" mat-button> Previous</button>
+                            <button (click) ="nextPage()" mat-button> Next</button>
+                            <button (click) ="lastPage()" mat-button> Last</button>
+                        </div>
                     </div>
                 </section>
             </main><!-- /.site-main -->
         </div><!-- /.content-area -->
     </div>
 </div>
+
