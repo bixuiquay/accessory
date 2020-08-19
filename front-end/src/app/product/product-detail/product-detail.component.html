@@ -266,12 +266,15 @@
                         class="input-text qty text"
                       />
                     </div>
-                    <button
+                    <!-- <button
                       type="submit"
                       class="single_add_to_cart_button button"
                     >
                       Thêm vào giỏ hàng
-                    </button>
+                    </button> -->
+                    <a rel="nofollow" class="single_add_to_cart_button button" (click)="addToCart(product)">
+                      Thêm vào giỏ hàng
+                    </a>
                     <input type="hidden" name="add-to-cart" value="2452" />
                     <input type="hidden" name="product_id" value="2452" />
                     <input

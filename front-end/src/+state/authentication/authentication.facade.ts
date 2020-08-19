@@ -16,6 +16,7 @@ export class AuthenticationFacade {
   authenticationId$ = this.query.selectActiveId();
   count$ = this.query.selectCount();
   loading$ = this.query.selectLoading();
+  user$ = this.query.select(state => state.user);
 
   /**
    * Constructor
@@ -46,6 +47,7 @@ export class AuthenticationFacade {
     this.store.setLoading(true);
 
     return this.service.clientLogin(model).pipe(
+      tap((data) => this.store.update(data.id, data)),
       tap(() => this.store.setLoading(false))
     );
   }

@@ -108,11 +108,7 @@
               <div class="owl-prev">prev</div>
               <div class="owl-next">next</div>
             </div>
-            <div class="owl-dots">
-              <div class="owl-dot active"><span></span></div>
-              <div class="owl-dot"><span></span></div>
-              <div class="owl-dot"><span></span></div>
-            </div>
+
           </div><!-- /.owl-carousel -->
 
           <!-- ========================================= SECTION – HERO : END ========================================= -->
@@ -369,143 +365,74 @@
           </div><!-- /.tabs-block -->
         </div><!-- /.deals-and-tabs -->
 
-        <!-- ============================================================= Sản phẩm bán chạy ============================================================= -->
+        <!-- ============================================================= Sản phẩm tổng hợp ============================================================= -->
         <section class="section-product-cards-carousel animate-in-view fadeIn animated" data-animation="fadeIn">
 
           <header>
             <h2 class="h1">Sản phẩm tổng hợp</h2>
+            
           </header>
           <div id="home-v1-product-cards-careousel">
-            <div
-              class="woocommerce columns-3 home-v1-product-cards-carousel product-cards-carousel owl-carousel owl-loaded owl-drag">
-              <div class="owl-stage-outer">
+            <div class="woocommerce columns-3 home-v1-product-cards-carousel product-cards-carousel owl-carousel "></div>
+              <div class="owl-stage">
                 <!-- <div class="owl-stage"
                   style="transform: translate3d(-1170px, 0px, 0px); transition: all 0s ease 0s; width: 2340px;"> -->
-                  <div class="owl-item" style="width: 1170px;">
-                    <ng-container *ngFor="let product of innerProducts; let i = index">
-                      <ul class="products columns-3">
-                        <!-- <li *ngFor="let product of innerProducts; let i = index" [class]="getProductClass(i)"></li> -->
-                        <li class="product product-card first">
-                          <div class="product-outer" style="height: 185px;">
-                              <div class="media product-inner">
-                                  <a class="media-left" [routerLink]="['/product', product.id]" routerLinkActive="router-link-active">
-                                      <img class="img-responsive media-object wp-post-image" [src]="product.image" alt="">
-                                  </a>
-                                  <div class="media-body">
-                                      <span class="loop-product-categories">
-                                          <a href="product-category.html" rel="tag">SSD</a>
+                <div class="owl-item" style="width: 1170px;">
+                  <!-- <ng-container *ngFor="let product of innerProducts; let i = index"> -->
+                    <ul class="products">
+                      <!-- <li *ngFor="let product of innerProducts; let i = index" [class]="getProductClass(i)"></li> -->
+
+                      <li class="product product-card" *ngFor="let product of innerProducts; let i = index" >
+                        <div class="product-outer" style="height: 185px;">
+                          <div class="media product-inner">
+                            <a class="media-left" [routerLink]="['/product', product.id]"
+                              routerLinkActive="router-link-active">
+                              <img class="img-responsive media-object wp-post-image" [src]="product.image" alt="">
+                            </a>
+                            <div class="media-body">
+                              <span class="loop-product-categories">
+                                <a href="product-category.html" rel="tag">SSD</a>
+                              </span>
+                              <a [routerLink]="['/product', product.id]" routerLinkActive="router-link-active">
+                                <h3>{{product.name}}</h3>
+                              </a>
+                              <div class="price-add-to-cart">
+                                <span class="price">
+                                  <span class="electro-price" style="position: relative;">
+                                    <ins>
+                                      <span
+                                        class="amount">{{ product.price | currency:'VND':'symbol':'3.2':'fr' }}</span>
+                                    </ins>
+                                    <del style="position:absolute;left:0;top:-14px;">
+                                      <span class="amount">
+                                        <!-- {{ product.isLastMinute? product.priceSale : '' | currency:'VND':'symbol':'3.2':'fr' }} -->
+                                        {{ product.priceSale  | currency:'VND':'symbol':'3.2':'fr' }}
                                       </span>
-                                      <a [routerLink]="['/product', product.id]" routerLinkActive="router-link-active">
-                                          <h3>{{product.name}}</h3>
-                                      </a>             
-                                      <div class="price-add-to-cart">
-                                        <span class="price">
-                                          <span class="electro-price" style="position: relative;">
-                                            <ins>
-                                              <span class="amount">{{ product.price | currency:'VND':'symbol':'3.2':'fr' }}</span>
-                                            </ins>
-                                            <del style="position:absolute;left:0;top:-14px;">
-                                              <span class="amount">{{ product.priceSale | currency:'VND':'symbol':'3.2':'fr' }}</span>
-                                            </del>
-                                            <span class="amount"> </span>
-                                          </span>
-                                        </span>
-                                        <a rel="nofollow" class="button add_to_cart_button" (click)="addToCart(product)">
-                                          Add to cart
-                                        </a>
-                                      </div>              
-                                  </div>
-                              </div>
-                          </div>
-                        </li>
-                        <li class="product product-card ">
-                          <div class="product-outer" style="height: 185px;">
-                            <div class="media product-inner">
-
-                              <a class="media-left" href="single-product.html" title="Pendrive USB 3.0 Flash 64 GB">
-                                <img class="media-object wp-post-image img-responsive"
-                                  src="assets/images/mainboard/2.PNG" alt="">
-                              </a>
-
-                              <div class="media-body">
-                                <span class="loop-product-categories">
-                                  <a href="product-category.html" rel="tag">Mainboard</a>
-                                </span>
-
-                                <a href="single-product.html">
-                                  <h3>{{ product.name}}-LION</h3>
-                                </a>
-
-                                <div class="price-add-to-cart">
-                                  <span class="price">
-                                    <span class="electon-price">
-                                      <ins><span class="amount"> 1.390.000đ</span></ins>
-                                      <del style="position:absolute;left:0;top:-14px;"><span
-                                          class="amount">1.699.000đ</span></del>
-                                      <span class="amount"> </span>
-                                    </span>
+                                    </del>
+                                    <span class="amount"> </span>
                                   </span>
-
-                                  <a href="cart.html" class="button add_to_cart_button">Add to cart</a>
-                                </div>
-
+                                </span>
+                                <a rel="nofollow" class="button add_to_cart_button" (click)="addToCart(product)">
+                                  Add to cart
+                                </a>
                               </div>
                             </div>
                           </div>
-
-                        </li>
-                        <li class="product product-card last">
-
-                          <div class="product-outer" style="height: 185px;">
-                            <div class="media product-inner">
-
-                              <a class="media-left" href="single-product.html" title="Pendrive USB 3.0 Flash 64 GB">
-                                <img class="media-object wp-post-image img-responsive"
-                                  src="assets/images/mainboard/4.PNG" alt="">
-                              </a>
-
-                              <div class="media-body">
-                                <span class="loop-product-categories">
-                                  <a href="product-category.html" rel="tag">Mainboard</a>
-                                </span>
-
-                                <a href="single-product.html">
-                                  <h3>Asus Prime H310M-E LGA1151v2</h3>
-                                </a>
-
-                                <div class="price-add-to-cart">
-                                  <span class="price">
-                                    <span class="electon-price">
-                                      <ins><span class="amount"> 1.690.000đ</span></ins>
-                                      <del style="position:absolute;left:0;top:-14px;"><span
-                                          class="amount">1.790.000đ</span></del>
-                                      <span class="amount"> </span>
-                                    </span>
-                                  </span>
-
-                                  <a href="cart.html" class="button add_to_cart_button">Add to cart</a>
-                                </div>
-
-                              </div>
-                            </div>
-                          </div>
-
-                        </li>
-                      </ul>
-                    </ng-container>
-                  </div>
+                        </div>
+                      </li>
+                    </ul>
+                  <!-- </ng-container> -->
+                </div>
                 <!-- </div> -->
               </div>
             </div>
-          </div>
         </section>
 
         <div class="home-v1-banner-block animate-in-view fadeIn animated" data-animation="fadeIn"></div>
         <!-- ============================================================= 2-1-2 Product Grid : End============================================================= -->
 
-        <!-- ===============================Recently =============================== -->
-
-
+        <!-- ===============================New version =============================== -->
+      
         <!-- ===============================Recently: End =============================== -->
         <section
           class="home-v1-recently-viewed-products-carousel section-products-carousel animate-in-view fadeIn animated"
@@ -551,7 +478,6 @@
                               <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to
                                 cart</a>
                             </div>
-
 
                           </div>
                         </div>
@@ -771,10 +697,6 @@
                 <div class="owl-nav">
                   <div class="owl-prev"></div>
                   <div class="owl-next disabled"></div>
-                </div>
-                <div class="owl-dots">
-                  <div class="owl-dot"><span></span></div>
-                  <div class="owl-dot active"><span></span></div>
                 </div>
               </div>
             </div>

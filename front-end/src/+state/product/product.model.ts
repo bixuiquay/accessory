@@ -9,6 +9,7 @@ export interface Product extends BaseEntity {
   listImage: string[];
   priceSale: number;
   brandId: number;
+  isLastMinute: boolean
 }
 
 export interface FilterProductOptions extends PaginationOptions {

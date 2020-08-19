@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./client/client.module').then(m => m.ClientModule),
-  }
+  },
   // { path: '**', component: PageNotFoundComponent }
 ];
 

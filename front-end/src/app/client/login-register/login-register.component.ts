@@ -59,7 +59,7 @@ export class LoginRegisterComponent implements OnInit {
   submitRegisterForm() {
     const dto = this.registerForm.value;
     this.autFacade.register(dto).subscribe(data => {
-      console.log('data: ', data);
+      data && this.router.navigateByUrl('');
     })
   }
 }

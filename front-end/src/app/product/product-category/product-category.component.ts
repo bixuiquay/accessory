@@ -7,7 +7,7 @@ import { CartProduct } from 'src/+state/cart-product/cart-product..model';
 import { CartProductFacade } from 'src/+state/cart-product/cart-product.facade';
 import { Category, CategoryFacade } from 'src/+state/category';
 import { ChildCategory, ChildCategoryFacade } from 'src/+state/child-category';
-import { Product, ProductFacade } from 'src/+state/product';
+import { Product, ProductFacade, FilterProductOptions } from 'src/+state/product';
 import { Pagination } from 'src/core/src';
 
 
@@ -19,6 +19,9 @@ import { Pagination } from 'src/core/src';
   styleUrls: ['./product-category.component.css']
 })
 export class ProductCategoryComponent implements OnInit {
+
+  filters: FilterProductOptions = { page: 1, limit: 4}
+
   products$: Observable<Pagination<Product>>;
   selectedCategory$:  Observable<ChildCategory>;
 
@@ -32,15 +35,18 @@ export class ProductCategoryComponent implements OnInit {
 
 
   ngOnInit() {
-    const page = 1;
-    const limit = 8;
+    this.fetchData();
+  }
+  
+  fetchData() {
+    // const page = 1;
+    // const limit = 4;
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.products$ = this.productFacade.getAll({
-        page,
-        limit,
+        ...this.filters,
         childCategoryId: Number(params.get('id'))
       });
-
+  
       // this.childCategoryFacade.get(Number(params.get('id')))
     });
   }
@@ -62,5 +68,42 @@ export class ProductCategoryComponent implements OnInit {
     }
   }
 
+  nextPage() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.products$ = this.productFacade.getAll({
+        ...this.filters,
+        page: ++this.filters.page,
+        childCategoryId: Number(params.get('id'))
+      });
+  
+      this.products$.subscribe((data) => console.log('data: ', data));
+      // this.childCategoryFacade.get(Number(params.get('id')))
+    });
+  }
 
+  previousPage() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.products$ = this.productFacade.getAll({
+        ...this.filters,
+        page: --this.filters.page,
+        childCategoryId: Number(params.get('id'))
+      });
+  
+      this.products$.subscribe((data) => console.log('data: ', data));
+      // this.childCategoryFacade.get(Number(params.get('id')))
+    });
+  }
+
+  firstPage() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.products$ = this.productFacade.getAll({
+        ...this.filters,
+        page: 1,
+        childCategoryId: Number(params.get('id'))
+      });
+  
+      this.products$.subscribe((data) => console.log('data: ', data));
+      // this.childCategoryFacade.get(Number(params.get('id')))
+    });
+  }
 }

@@ -31,7 +31,12 @@
                   *ngFor="let item of cart$ | async as list"
                 >
                   <td class="product-remove">
-                    <a class="remove" href="#">×</a>
+                    <a title="Remove this item"
+                    class="remove"
+                    (click)="removeItem(item)">
+                    ×
+                    </a>
+                    
                   </td>
 
                   <td class="product-thumbnail">
@@ -133,7 +138,7 @@
                   <tr class="cart-subtotal">
                     <th>Tổng sản phẩm</th>
                     <td data-title="Subtotal">
-                      <span class="amount">14,670,000đ</span>
+                      <span class="amount">{{productTotal}}</span>
                     </td>
                   </tr>
 
@@ -536,7 +541,9 @@
                   <tr class="order-total">
                     <th>Tổng tiền</th>
                     <td data-title="Total">
-                      <strong><span class="amount">14,670,000đ</span></strong>
+                      <strong>
+                        <span class="amount">{{total}}</span>
+                      </strong>
                     </td>
                   </tr>
                 </tbody>
